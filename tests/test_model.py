@@ -77,13 +77,34 @@ class TestMission(unittest.TestCase):
         self.assertGreaterEqual(res["V"], model.AC["min_speed_margin"] * res["Vs"] - 1e-9)
 
 
+class TestEndurance(unittest.TestCase):
+    def test_more_efficient_aero_never_needs_more_mass(self):
+        es = model.P["endurance_study"]
+        af = [a for a in es["airframes"] if a["id"] == "Classe-FW-2.6m"][0]
+        cell = [c for c in es["cells"] if c["id"] == "P45B"][0]
+        nominal, clean = es["aero_variants"][0], es["aero_variants"][2]
+        a = model.size_for_flight_time(af, cell, nominal, 120, 5)
+        b = model.size_for_flight_time(af, cell, clean, 120, 5)
+        self.assertIsNotNone(b)
+        if a is not None:
+            self.assertLessEqual(b["masse_kg"], a["masse_kg"])
+
+    def test_flight_time_target_respected_with_reserve(self):
+        es = model.P["endurance_study"]
+        af = [a for a in es["airframes"] if a["id"] == "Classe-FW-2.6m"][0]
+        cell = [c for c in es["cells"] if c["id"] == "P50B"][0]
+        s = model.size_for_flight_time(af, cell, es["aero_variants"][2], 120, 5)
+        self.assertGreaterEqual(s["marge_Wh"], 0)
+        self.assertLessEqual(s["masse_kg"], af["mtow_kg"])
+
+
 class TestOutputs(unittest.TestCase):
     def test_main_writes_consistent_csv(self):
         with tempfile.TemporaryDirectory() as d:
             model.main(d)
             for name in ["fw_sizing.csv", "vtol_sizing.csv", "selection_batterie.csv",
                          "photogrammetrie.csv", "lancement_recuperation.csv", "sensibilite.csv",
-                         "atmosphere.csv", "controles.csv"]:
+                         "atmosphere.csv", "controles.csv", "endurance_2h.csv"]:
                 path = os.path.join(d, name)
                 self.assertTrue(os.path.exists(path), name)
                 with open(path, encoding="utf-8") as f:

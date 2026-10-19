@@ -1,6 +1,6 @@
 # Dossier 02 : Cahier des charges
 
-Version 0.1, 19 octobre 2026. Statut : provisoire. Les exigences notées **P** dépendent des décisions D-01 à D-05 (`registres/decisions.csv`).
+Version 0.2, 19 octobre 2026. Statut : provisoire. Révision v0.2 : MIS-02 porté à 2 h de vol avec 30 % de réserve (voir le Dossier 03b). Les exigences notées **P** dépendent des décisions D-01 à D-05 (`registres/decisions.csv`).
 
 Méthodes de vérification : **A** Analyse, **E** Essai, **I** Inspection, **D** Démonstration en vol.
 
@@ -29,7 +29,7 @@ Conséquence : **la décision D-01, durée ou surface d'acquisition par sortie, 
 | ID | Exigence | Valeur | Statut | Vérif. |
 |---|---|---|---|---|
 | MIS-01 | Rayon d'action en transit | 20 km aller + 20 km retour | P (D-01) | A, D |
-| MIS-02 | Durée d'acquisition par sortie | 30 min (référence) ; scénarios 0 à 60 min | P (D-01) | A, D |
+| MIS-02 | Endurance | **2 h de vol avec 30 % de réserve** (révision du 2026-10-19) ; l'acquisition remplit le temps restant, soit environ 57 à 82 min | Confirmée (utilisateur) | A, D |
 | MIS-03 | Réserve d'énergie à l'atterrissage | ≥ 30 % de l'énergie utilisable | Confirmée | A, E (journaux) |
 | MIS-04 | Hauteur maximale | 1000 m AGL ; altitude de site 960 m AMSL | Confirmée | A, D |
 | MIS-05 | Conditions atmosphériques de dimensionnement | Jusqu'à ISA+21 °C (30 °C au sol) | P | A |

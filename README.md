@@ -1,6 +1,6 @@
 # uav-design : UAV de cartographie, prototypes A (Fixed Wing) et B (VTOL)
 
-Version 0.1, 19 octobre 2026. Phases couvertes : 0 (audit et reprise), 1 (recherche et exigences) et 2 (avant-projets). Les dossiers 06 à 09 seront produits en Phases 3 à 5. Je ne crée pas de fichiers vides pour les annoncer.
+Version 0.2, 19 octobre 2026. Phases couvertes : 0 (audit et reprise), 1 (recherche et exigences) et 2 (avant-projets). Les dossiers 06 à 09 seront produits en Phases 3 à 5. Je ne crée pas de fichiers vides pour les annoncer.
 
 ## 1. Objectifs et contraintes reformulés
 
@@ -25,7 +25,7 @@ uav-design/
 ├── docs/
 │   ├── 01_audit/                 Dossier 01 : audit de Blueprint (rapport + matrice CSV, 26 constats)
 │   ├── 02_cahier_des_charges/    Dossier 02 : 33 exigences identifiées et méthodes de vérification
-│   ├── 03_plateformes/           Dossier 03 : comparatif des cellules et des architectures VTOL (ADR-001)
+│   ├── 03_plateformes/           Dossier 03 : comparatif des cellules et architectures VTOL (ADR-001) ; 03b : faisabilité 2 h
 │   ├── 04_prototype_A/           Dossier 04 : avant-projet Fixed Wing
 │   └── 05_prototype_B/           Dossier 05 : avant-projet VTOL QuadPlane
 ├── calc/
@@ -68,6 +68,19 @@ Mission de référence : 2 × 20 km, 30 min d'acquisition, vent de 5 m/s, ISA+21
 
 **Lecture.** Les deux avant-projets bouclent en cas nominal, avec des marges trop minces pour un prototype. Aucun vainqueur n'est désigné. Le VTOL coûte environ deux fois l'énergie et la masse de cellules de batterie. Son avantage est entièrement conditionné par la surface disponible sur les sites (D-04).
 
+### 3.1 Révision v0.2 : endurance de 2 h avec 30 % de réserve
+
+L'exigence MIS-02 est passée à 2 h de vol avec 30 % de réserve, soit environ 171 minutes d'énergie embarquée à la puissance de croisière. Détail dans `docs/03_plateformes/03b_etude_endurance_2h.md` et `calc/out/endurance_2h.csv`.
+
+| Configuration (vent de 5 m/s) | Li-ion P45B | Li-ion P50B | Haute énergie (HYP) |
+|---|---|---|---|
+| A : Believer, hypothèses nominales | Non faisable | Non faisable | 4,92 kg |
+| A : Believer, cellule propre + hélice optimisée | 4,93 kg (90 % MTOW) | 4,90 kg | 4,15 kg |
+| FW de classe 2,6 m, cellule propre + hélice optimisée | 5,99 kg | 5,50 kg | 4,75 kg |
+| B : Fighter VTOL, cellule propre + hélice optimisée | Non faisable | 8,97 kg, 1080 Wh | 7,48 kg, 960 Wh |
+
+**Lecture.** 2 h avec réserve est atteignable en Fixed Wing si la traînée et l'hélice sont optimisées, ce qui reste à mesurer. Le VTOL n'y parvient qu'avec des cellules haute énergie et environ 1 kWh de batterie. Le DeltaQuad Evo (R28) montre qu'un VTOL de la classe 8 à 10 kg le fait commercialement, d'abord grâce à son efficacité aérodynamique. Notre modèle reproduit sa puissance implicite à environ 10 % près.
+
 ## 4. Exigences critiques pour le choix entre A et B
 
 1. **Surface de lancement et de récupération disponible sur les sites types (D-04).** C'est le critère qui peut rendre le VTOL obligatoire ou superflu.
@@ -100,3 +113,5 @@ Je ne vous demande que ce qui change réellement la conception. Les travaux P3-1
 - **D-04** : quelle surface dégagée existe sur les sites de lancement types ?
 - **D-03** : faut-il demander une licence institutionnelle à Flightory, ou exclure leurs cellules ? Par défaut, exclusion.
 - **D-05** : quel est le plafond budgétaire, et la caméra et un objectif sont-ils déjà en votre possession ?
+- **D-06** : acceptez-vous des cellules de batterie haute énergie (classe 300 à 400 Wh/kg), plus chères et à durée de vie plus courte ?
+- **D-07** : faut-il élargir la recherche à une cellule FW de 2,4 à 3 m optimisée pour l'endurance, puisque la Believer devient limite pour 2 h ?

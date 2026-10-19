@@ -1,5 +1,12 @@
 # Historique
 
+## v0.2 (2026-10-19)
+
+- Exigence MIS-02 révisée : 2 h de vol en conservant 30 % de réserve.
+- `calc/model.py` : fonction `size_for_flight_time`, nouvelle sortie `calc/out/endurance_2h.csv` (5 cellules, 3 variantes aéro-propulsives, 3 technologies de cellules, vents de 0, 5 et 8 m/s).
+- Dossier 03b : étude de faisabilité 2 h, contrôle indépendant contre le DeltaQuad Evo.
+- Registres : R28 à R31, H21 à H24, REQ-2026-10-19, D-06, D-07.
+
 ## v0.1 (2026-10-19)
 
 Phases 0 à 2 : audit et reprise, recherche et exigences, avant-projets.

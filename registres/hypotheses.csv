@@ -19,3 +19,7 @@ H17,Vent moyen,5 m/s,0-10 m/s,HYP,Aucune statistique de vent consultee,Forte (4e
 H18,Intervalle mini de declenchement,1.0 s,0.4-2.0 s,HYP,Sony indique ~2.5 a 5 i/s selon la sequence FOCUS/TRIGGER (R08); ecriture carte SD non caracterisee,Faible a ces hauteurs,Banc: rafale de 500 declenchements avec carte retenue
 H19,Poussee/poids de sustentation requis,1.8,1.6-2.2,HYP,Marge de commande heuristique; ArduPilot ne fixe pas de valeur (R16),Dimensionne les moteurs de sustentation,Essais de stationnaire avec perturbations et vent
 H20,Rapport crete/moyenne catapulte,1.6,1.3-2.0,HYP,Catapulte elastique non lineaire,Charges structurelles,Accelerometre sur la cellule pendant les lancements
+H21,Cellules Li-ion haute energie (classe semi-solide),350 Wh/kg cellule; 12 % de surcout pack,316-417 Wh/kg (R30),HYP,Produit non selectionne; C-rate 1 a 7C et 250 a 800 cycles selon R30,Forte pour l'objectif 2 h,Fiche produit + essai de decharge au profil (stationnaire VTOL compris)
+H22,"Masse seche des cellules generiques 2,6 m et 3,0 m",2.4 kg et 2.8 kg,+-0.4 kg,HYP,Aucune cellule commerciale verifiee de cette classe a ce stade,Moyenne,Identifier des cellules reelles (P3-1)
+H23,Variante aerodynamique 'cellule propre',CD0 0.030,0.025-0.035,HYP,"Cellule optimisee endurance: fuselage profile, camera interne, pas de bras exposes",Forte,Identification de polaire en vol
+H24,Variante 'helice optimisee',eta global 0.57,0.55-0.62,HYP,Helice de grand diametre a faible regime adaptee au point de croisiere,Forte,Banc dynamique

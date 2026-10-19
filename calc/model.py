@@ -144,6 +144,38 @@ def mission(m, ac, S, b, case, map_min, wind, vtol=None, V_fixed=None):
 def mass_total(dry, bt):
     return dry + M_AVIO + M_PAYLOAD + bt["kg"]
 
+
+# ---------------------------------------------------------------- etude endurance (temps de vol cible)
+def size_for_flight_time(af, cell, aero, target_min, wind, case_index=1, max_cells=240):
+    """Plus petite batterie 6S (pas de 6 cellules) tenant `target_min` de vol
+    avec la reserve, sous la MTOW. L'acquisition remplit le temps restant
+    apres montee, transit aller-retour et approche."""
+    case = case_vals(case_index)
+    case["CD0"] = max(0.01, case["CD0"] + aero["CD0_offset"])
+    case["eta"] = aero["eta"]
+    vt = None
+    if af["type"] == "VTOL":
+        vt = dict(n=4, prop_in=af["prop_in"], dCD0=af["dCD0"], FM=VT["figure_of_merit"][case_index],
+                  eta_h=VT["eta_motor_esc_hover"][case_index], t_hover=VT["hover_s_per_sortie"][case_index])
+    for n in range(6, max_cells + 1, 6):
+        bt = dict(id=f"6S{n // 6}P {cell['id']}", s=6, p=n // 6, Wh=n * cell["Wh"],
+                  kg=n * cell["g"] * (1 + cell["overhead"]) / 1000.0)
+        bt["use_Wh"] = bt["Wh"] * cell["usable"]
+        m = mass_total(af["dry_kg"], bt)
+        if af["mtow_kg"] and m > af["mtow_kg"]:
+            return None
+        r0 = mission(m, AC, af["S_m2"], af["b_m"], case, 0, wind, vtol=vt)
+        if not math.isfinite(r0["E_req"]):
+            continue
+        overhead_min = (mis["pattern_landing_s"] / 60) if vt is None else (VT["hover_s_per_sortie"][case_index] / 60)
+        t_map = max(0.0, target_min - r0["t_total_min"] - overhead_min)
+        r = mission(m, AC, af["S_m2"], af["b_m"], case, t_map, wind, vtol=vt)
+        if bt["use_Wh"] >= r["E_req"]:
+            return dict(batterie=bt["id"], cellules=n, masse_kg=m, batt_kg=bt["kg"], Wh_nominal=bt["Wh"],
+                        E_req_Wh=r["E_req"], marge_Wh=bt["use_Wh"] - r["E_req"], P_palier_W=r["P_level"],
+                        V_transit_ms=r["V"], acquisition_min=t_map, finesse=r["LD"])
+    return None
+
 # ---------------------------------------------------------------- balayage
 def write_csv(name, rows):
     if not rows: return
@@ -350,6 +382,25 @@ def main(out_dir=None, verbose=False):
                        valeur=r(m * G * dh / 3600, 2), reference="m g h / 3600"))
     write_csv("controles.csv", checks)
 
+
+    # ------------------------------------------------------------ etude endurance 2 h
+    ES = P.get("endurance_study")
+    end_rows = []
+    if ES and mis.get("target_flight_min"):
+        for af in ES["airframes"]:
+            for aero in ES["aero_variants"]:
+                for cell in ES["cells"]:
+                    for w in (0, 5, 8):
+                        s_ = size_for_flight_time(af, cell, aero, mis["target_flight_min"], w)
+                        end_rows.append(dict(cellule=af["id"], type=af["type"], aero=aero["id"], cellule_batterie=cell["id"],
+                                             vent_ms=w, faisable=bool(s_),
+                                             batterie=s_["batterie"] if s_ else "AUCUNE",
+                                             masse_kg=r(s_["masse_kg"], 2) if s_ else "", mtow_kg=af["mtow_kg"],
+                                             batt_kg=r(s_["batt_kg"], 2) if s_ else "", Wh_nominal=r(s_["Wh_nominal"], 0) if s_ else "",
+                                             P_palier_W=r(s_["P_palier_W"], 0) if s_ else "", finesse=r(s_["finesse"], 1) if s_ else "",
+                                             acquisition_min=r(s_["acquisition_min"], 0) if s_ else "",
+                                             marge_Wh=r(s_["marge_Wh"], 0) if s_ else ""))
+        write_csv("endurance_2h.csv", end_rows)
     # ---------------------------------------------------------------- synthese
     def pick(rows, **kw):
         return [x for x in rows if all(x[k] == val for k, val in kw.items())]
@@ -366,13 +417,19 @@ def main(out_dir=None, verbose=False):
     for s in sel:
         if s["vent_ms"] == 5:
             lines.append(f"| {s['type']} | {s['cas']} | {s['cellule']} | {s['cartographie_min']} | {s['batterie_min']} | {s['masse_kg']} | {s['marge_Wh']} |")
+    if end_rows:
+        lines += ["", f"## Etude endurance: {mis['target_flight_min']} min de vol + {int(mis['reserve_frac']*100)} % de reserve (vent 5 m/s)", "",
+                  "| Cellule | Aero | Cellules batterie | Batterie | Masse (kg) | Wh nominal | P palier (W) | Acquisition (min) |", "|---|---|---|---|---|---|---|---|"]
+        for e in end_rows:
+            if e["vent_ms"] == 5:
+                lines.append(f"| {e['cellule']} | {e['aero']} | {e['cellule_batterie']} | {e['batterie']} | {e['masse_kg']} | {e['Wh_nominal']} | {e['P_palier_W']} | {e['acquisition_min']} |")
     lines += ["", "## Controles independants", ""]
     for ck in checks:
         lines.append(f"- {ck['controle']}: {ck['valeur']} ({ck['reference']})")
     open(os.path.join(OUT, "summary.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
     if verbose:
         print("\n".join(lines))
-    return dict(rows_fw=rows_fw, rows_vt=rows_vt, selection=sel, sensibilite=sens, controles=checks)
+    return dict(rows_fw=rows_fw, rows_vt=rows_vt, selection=sel, sensibilite=sens, controles=checks, endurance=end_rows)
 
 
 if __name__ == "__main__":

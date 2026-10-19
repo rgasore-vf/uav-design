@@ -5,107 +5,598 @@
     "note": "Chaque valeur porte un statut: SRC = donnee source (voir registres/references.csv), HYP = hypothese, EST = estimation d'ingenierie. Modifier ici puis relancer model.py."
   },
   "site": {
-    "takeoff_elev_m": [960, "SRC utilisateur"],
-    "max_agl_m": [1000, "SRC utilisateur"],
-    "hot_day_dT_C": [21.0, "HYP: 30 C au sol a 960 m, ISA = 8.8 C"]
+    "takeoff_elev_m": [
+      960,
+      "SRC utilisateur"
+    ],
+    "max_agl_m": [
+      1000,
+      "SRC utilisateur"
+    ],
+    "hot_day_dT_C": [
+      21.0,
+      "HYP: 30 C au sol a 960 m, ISA = 8.8 C"
+    ]
   },
   "mission": {
-    "transit_one_way_km": [20.0, "SRC utilisateur: 20 km aller + 20 km retour (definition a confirmer, D-01)"],
-    "mapping_min": [[0, 15, 30, 45, 60], "HYP: balayage de scenarios, valeur a fixer (D-01)"],
-    "wind_ms": [[0, 5, 8, 10], "HYP: balayage, vent moyen constant aller/retour"],
-    "cruise_agl_m": [300, "HYP: hauteur de transit et d'acquisition de reference"],
-    "climb_rate_ms": [2.0, "HYP"],
-    "mapping_airspeed_ms": [18.0, "HYP: vitesse air d'acquisition, bornee par l'intervalle de declenchement et le flou"],
-    "descent_rate_ms": [3.0, "HYP"],
-    "pattern_landing_s": [180, "HYP: tour de piste + approche FW"],
-    "reserve_frac": [0.30, "SRC utilisateur: 30 % de l'energie utilisable"]
+    "transit_one_way_km": [
+      20.0,
+      "SRC utilisateur: 20 km aller + 20 km retour (definition a confirmer, D-01)"
+    ],
+    "mapping_min": [
+      [
+        0,
+        15,
+        30,
+        45,
+        60
+      ],
+      "HYP: balayage de scenarios, valeur a fixer (D-01)"
+    ],
+    "wind_ms": [
+      [
+        0,
+        5,
+        8,
+        10
+      ],
+      "HYP: balayage, vent moyen constant aller/retour"
+    ],
+    "cruise_agl_m": [
+      300,
+      "HYP: hauteur de transit et d'acquisition de reference"
+    ],
+    "climb_rate_ms": [
+      2.0,
+      "HYP"
+    ],
+    "mapping_airspeed_ms": [
+      18.0,
+      "HYP: vitesse air d'acquisition, bornee par l'intervalle de declenchement et le flou"
+    ],
+    "descent_rate_ms": [
+      3.0,
+      "HYP"
+    ],
+    "pattern_landing_s": [
+      180,
+      "HYP: tour de piste + approche FW"
+    ],
+    "reserve_frac": [
+      0.3,
+      "SRC utilisateur: 30 % de l'energie utilisable"
+    ],
+    "target_flight_min": [
+      120,
+      "SRC utilisateur 2026-10-19: 2 h de vol en conservant 30 % de reserve; l'acquisition remplit le temps restant apres montee, transit et approche"
+    ]
   },
   "aero_common": {
-    "CD0": [[0.030, 0.040, 0.050], "HYP: bas/nominal/haut, cellule mousse avec fuselage, camera interne, sans donnees soufflerie"],
-    "e_oswald": [[0.85, 0.78, 0.70], "HYP: haut/nominal/bas"],
-    "CLmax": [[1.3, 1.1, 1.0], "HYP: profil basse Reynolds sans volets; a mesurer en vol (vitesse de decrochage)"],
-    "min_speed_margin": [1.3, "HYP: V >= 1.3 Vs en croisiere et acquisition"],
-    "eta_prop": [[0.65, 0.60, 0.50], "HYP: rendement helice en croisiere"],
-    "eta_motor_esc": [[0.88, 0.85, 0.80], "HYP"]
+    "CD0": [
+      [
+        0.03,
+        0.04,
+        0.05
+      ],
+      "HYP: bas/nominal/haut, cellule mousse avec fuselage, camera interne, sans donnees soufflerie"
+    ],
+    "e_oswald": [
+      [
+        0.85,
+        0.78,
+        0.7
+      ],
+      "HYP: haut/nominal/bas"
+    ],
+    "CLmax": [
+      [
+        1.3,
+        1.1,
+        1.0
+      ],
+      "HYP: profil basse Reynolds sans volets; a mesurer en vol (vitesse de decrochage)"
+    ],
+    "min_speed_margin": [
+      1.3,
+      "HYP: V >= 1.3 Vs en croisiere et acquisition"
+    ],
+    "eta_prop": [
+      [
+        0.65,
+        0.6,
+        0.5
+      ],
+      "HYP: rendement helice en croisiere"
+    ],
+    "eta_motor_esc": [
+      [
+        0.88,
+        0.85,
+        0.8
+      ],
+      "HYP"
+    ]
   },
   "aux_power_W": {
-    "camera_ILX-LR1": [3.8, "SRC Dronefly fiche IF800 payload"],
-    "autopilot_X7plus_pro": [2.5, "EST: non publie dans la doc consultee"],
-    "gnss": [1.0, "EST"],
-    "telemetry_RFD868x_avg": [2.0, "EST: crete 800 mA a 5 V (SRC irlock), rapport cyclique inconnu"],
-    "rc_receiver": [0.5, "EST"],
-    "servos_avg": [3.0, "EST"],
-    "airspeed_misc": [0.5, "EST"],
-    "bec_efficiency": [0.85, "HYP"]
+    "camera_ILX-LR1": [
+      3.8,
+      "SRC Dronefly fiche IF800 payload"
+    ],
+    "autopilot_X7plus_pro": [
+      2.5,
+      "EST: non publie dans la doc consultee"
+    ],
+    "gnss": [
+      1.0,
+      "EST"
+    ],
+    "telemetry_RFD868x_avg": [
+      2.0,
+      "EST: crete 800 mA a 5 V (SRC irlock), rapport cyclique inconnu"
+    ],
+    "rc_receiver": [
+      0.5,
+      "EST"
+    ],
+    "servos_avg": [
+      3.0,
+      "EST"
+    ],
+    "airspeed_misc": [
+      0.5,
+      "EST"
+    ],
+    "bec_efficiency": [
+      0.85,
+      "HYP"
+    ]
   },
   "avionics_mass_g": {
-    "X7plus_pro": [105, "SRC ArduPilot CUAV X7 family overview"],
-    "gnss_module": [50, "EST"],
-    "RFD868x": [14.5, "SRC irlock"],
-    "rfd_antennas_cables": [40, "EST"],
-    "rc_receiver_antennas": [20, "EST"],
-    "airspeed_pitot": [20, "EST"],
-    "power_module_bec": [60, "EST"],
-    "camera_trigger_interface": [10, "EST"]
+    "X7plus_pro": [
+      105,
+      "SRC ArduPilot CUAV X7 family overview"
+    ],
+    "gnss_module": [
+      50,
+      "EST"
+    ],
+    "RFD868x": [
+      14.5,
+      "SRC irlock"
+    ],
+    "rfd_antennas_cables": [
+      40,
+      "EST"
+    ],
+    "rc_receiver_antennas": [
+      20,
+      "EST"
+    ],
+    "airspeed_pitot": [
+      20,
+      "EST"
+    ],
+    "power_module_bec": [
+      60,
+      "EST"
+    ],
+    "camera_trigger_interface": [
+      10,
+      "EST"
+    ]
   },
   "payload_mass_g": {
-    "ILX-LR1_body": [243, "SRC Sony"],
-    "lens_Samyang_AF24_F2.8": [93, "SRC cameradecision (fiche fabricant a confirmer)"],
-    "mount_damping_cables": [100, "EST"],
-    "allowance_total": [500, "SRC utilisateur: enveloppe charge utile"]
+    "ILX-LR1_body": [
+      243,
+      "SRC Sony"
+    ],
+    "lens_Samyang_AF24_F2.8": [
+      93,
+      "SRC cameradecision (fiche fabricant a confirmer)"
+    ],
+    "mount_damping_cables": [
+      100,
+      "EST"
+    ],
+    "allowance_total": [
+      500,
+      "SRC utilisateur: enveloppe charge utile"
+    ]
   },
   "batteries": [
-    {"id": "LI-6S2P", "chem": "Li-ion P45B", "s": 6, "p": 2, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "cellule SRC Molicel; overhead/usable HYP"},
-    {"id": "LI-6S3P", "chem": "Li-ion P45B", "s": 6, "p": 3, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "idem"},
-    {"id": "LI-6S4P", "chem": "Li-ion P45B", "s": 6, "p": 4, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "idem"},
-    {"id": "LI-6S5P", "chem": "Li-ion P45B", "s": 6, "p": 5, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "idem"},
-    {"id": "LI-6S6P", "chem": "Li-ion P45B", "s": 6, "p": 6, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "idem"},
-    {"id": "LI-6S8P", "chem": "Li-ion P45B", "s": 6, "p": 8, "cell_Wh": 16.2, "cell_g": 70, "overhead": 0.10, "usable": 0.85, "cell_Amax": 45, "src": "idem"},
-    {"id": "LIPO-6S-16000", "chem": "LiPo Tattu 15C", "s": 6, "p": 1, "pack_Wh": 355.2, "pack_g": 1932, "usable": 0.80, "pack_Acont": 240, "src": "SRC GetFPV (masse, 15C); usable HYP"}
+    {
+      "id": "LI-6S2P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 2,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "cellule SRC Molicel; overhead/usable HYP"
+    },
+    {
+      "id": "LI-6S3P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 3,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "idem"
+    },
+    {
+      "id": "LI-6S4P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 4,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "idem"
+    },
+    {
+      "id": "LI-6S5P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 5,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "idem"
+    },
+    {
+      "id": "LI-6S6P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 6,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "idem"
+    },
+    {
+      "id": "LI-6S8P",
+      "chem": "Li-ion P45B",
+      "s": 6,
+      "p": 8,
+      "cell_Wh": 16.2,
+      "cell_g": 70,
+      "overhead": 0.1,
+      "usable": 0.85,
+      "cell_Amax": 45,
+      "src": "idem"
+    },
+    {
+      "id": "LIPO-6S-16000",
+      "chem": "LiPo Tattu 15C",
+      "s": 6,
+      "p": 1,
+      "pack_Wh": 355.2,
+      "pack_g": 1932,
+      "usable": 0.8,
+      "pack_Acont": 240,
+      "src": "SRC GetFPV (masse, 15C); usable HYP"
+    }
   ],
   "fixed_wing_candidates": [
-    {"id": "Believer-1960", "S_m2": 0.51, "b_m": 1.96, "mtow_kg": 5.5, "dry_kg": [1.4, 1.6, 1.9], "recovery_kg": 0.2,
-     "src": "S, b, MTOW: vendeurs (GetFPV, rcdrone.top); dry = HYP calee sur essai vendeur ~4.5 kg avec 670 g de charge et LiPo 6S"},
-    {"id": "Flightory-Moose", "S_m2": 0.365, "b_m": 1.60, "mtow_kg": 4.5, "dry_kg": [1.0, 1.2, 1.5], "recovery_kg": 0.2,
-     "src": "manuel Flightory v1; dry = HYP (non publiee)"},
-    {"id": "Skywalker-X8", "S_m2": 0.80, "b_m": 2.122, "mtow_kg": null, "dry_kg": [1.5, 1.8, 2.1], "recovery_kg": 0.2,
-     "src": "S, b: skyraccoon (secondaire); MTOW non documentee en source primaire; dry = HYP"}
+    {
+      "id": "Believer-1960",
+      "S_m2": 0.51,
+      "b_m": 1.96,
+      "mtow_kg": 5.5,
+      "dry_kg": [
+        1.4,
+        1.6,
+        1.9
+      ],
+      "recovery_kg": 0.2,
+      "src": "S, b, MTOW: vendeurs (GetFPV, rcdrone.top); dry = HYP calee sur essai vendeur ~4.5 kg avec 670 g de charge et LiPo 6S"
+    },
+    {
+      "id": "Flightory-Moose",
+      "S_m2": 0.365,
+      "b_m": 1.6,
+      "mtow_kg": 4.5,
+      "dry_kg": [
+        1.0,
+        1.2,
+        1.5
+      ],
+      "recovery_kg": 0.2,
+      "src": "manuel Flightory v1; dry = HYP (non publiee)"
+    },
+    {
+      "id": "Skywalker-X8",
+      "S_m2": 0.8,
+      "b_m": 2.122,
+      "mtow_kg": null,
+      "dry_kg": [
+        1.5,
+        1.8,
+        2.1
+      ],
+      "recovery_kg": 0.2,
+      "src": "S, b: skyraccoon (secondaire); MTOW non documentee en source primaire; dry = HYP"
+    }
   ],
   "vtol_candidates": [
-    {"id": "MFE-Fighter-VTOL", "S_m2": 0.725, "b_m": 2.43, "mtow_kg": 11.5, "dry_kg": [3.0, 3.6, 4.5],
-     "n_lift": 4, "prop_in": 16, "dCD0_vtol": [0.003, 0.006, 0.012],
-     "src": "S, b, MTOW, charge utile max 2.5 kg: ArduPilot setup guide MFE Fighter VTOL; dry (cellule + systeme VTOL + moteur croisiere) = HYP a obtenir du fabricant"},
-    {"id": "Believer-QuadPlane", "S_m2": 0.51, "b_m": 1.96, "mtow_kg": 5.5, "dry_kg": [2.6, 2.9, 3.3],
-     "n_lift": 4, "prop_in": 15, "dCD0_vtol": [0.004, 0.008, 0.014],
-     "src": "conversion maison; dry = Believer dry + systeme VTOL HYP 1.2-1.4 kg"}
+    {
+      "id": "MFE-Fighter-VTOL",
+      "S_m2": 0.725,
+      "b_m": 2.43,
+      "mtow_kg": 11.5,
+      "dry_kg": [
+        3.0,
+        3.6,
+        4.5
+      ],
+      "n_lift": 4,
+      "prop_in": 16,
+      "dCD0_vtol": [
+        0.003,
+        0.006,
+        0.012
+      ],
+      "src": "S, b, MTOW, charge utile max 2.5 kg: ArduPilot setup guide MFE Fighter VTOL; dry (cellule + systeme VTOL + moteur croisiere) = HYP a obtenir du fabricant"
+    },
+    {
+      "id": "Believer-QuadPlane",
+      "S_m2": 0.51,
+      "b_m": 1.96,
+      "mtow_kg": 5.5,
+      "dry_kg": [
+        2.6,
+        2.9,
+        3.3
+      ],
+      "n_lift": 4,
+      "prop_in": 15,
+      "dCD0_vtol": [
+        0.004,
+        0.008,
+        0.014
+      ],
+      "src": "conversion maison; dry = Believer dry + systeme VTOL HYP 1.2-1.4 kg"
+    }
   ],
   "vtol": {
-    "figure_of_merit": [[0.75, 0.68, 0.60], "HYP; recoupee par donnees banc T-Motor MN4014 (methode 2)"],
-    "eta_motor_esc_hover": [[0.88, 0.85, 0.80], "HYP"],
-    "hover_s_per_sortie": [[90, 120, 180], "HYP: decollage 30 m + transition + retransition + descente + positionnement"],
-    "transition_power_factor": [1.2, "HYP: ArduPilot signale des courants eleves en transition"],
-    "contingency_hover_s": [60, "HYP: remise des gaz verticale ou attente"],
-    "twr_lift_required": [1.8, "HYP heuristique de marge de commande, a confirmer par essais"]
+    "figure_of_merit": [
+      [
+        0.75,
+        0.68,
+        0.6
+      ],
+      "HYP; recoupee par donnees banc T-Motor MN4014 (methode 2)"
+    ],
+    "eta_motor_esc_hover": [
+      [
+        0.88,
+        0.85,
+        0.8
+      ],
+      "HYP"
+    ],
+    "hover_s_per_sortie": [
+      [
+        90,
+        120,
+        180
+      ],
+      "HYP: decollage 30 m + transition + retransition + descente + positionnement"
+    ],
+    "transition_power_factor": [
+      1.2,
+      "HYP: ArduPilot signale des courants eleves en transition"
+    ],
+    "contingency_hover_s": [
+      60,
+      "HYP: remise des gaz verticale ou attente"
+    ],
+    "twr_lift_required": [
+      1.8,
+      "HYP heuristique de marge de commande, a confirmer par essais"
+    ]
   },
   "camera": {
-    "sensor_w_mm": [35.8, "SRC fiche Duncan-Parnell (Sony)"],
-    "sensor_h_mm": [23.9, "SRC idem"],
-    "px_w": [9504, "SRC idem"],
-    "px_h": [6336, "SRC idem"],
-    "focal_mm": [[24, 35], "SRC objectifs Samyang AF 24/35 F2.8 FE"],
-    "overlap_fwd": [[0.80, 0.80], "HYP: ortho / 3D"],
-    "overlap_side": [[0.70, 0.80], "HYP: ortho / 3D"],
-    "min_trigger_interval_s": [1.0, "HYP prudente; Sony: ~2.5 a 5 i/s selon sequence FOCUS/TRIGGER"],
-    "exposure_s": [[0.0005, 0.001], "HYP: 1/2000 et 1/1000"],
-    "turn_efficiency": [0.80, "HYP: fraction du temps sur ligne utile"],
-    "raw_bits": [14, "HYP"]
+    "sensor_w_mm": [
+      35.8,
+      "SRC fiche Duncan-Parnell (Sony)"
+    ],
+    "sensor_h_mm": [
+      23.9,
+      "SRC idem"
+    ],
+    "px_w": [
+      9504,
+      "SRC idem"
+    ],
+    "px_h": [
+      6336,
+      "SRC idem"
+    ],
+    "focal_mm": [
+      [
+        24,
+        35
+      ],
+      "SRC objectifs Samyang AF 24/35 F2.8 FE"
+    ],
+    "overlap_fwd": [
+      [
+        0.8,
+        0.8
+      ],
+      "HYP: ortho / 3D"
+    ],
+    "overlap_side": [
+      [
+        0.7,
+        0.8
+      ],
+      "HYP: ortho / 3D"
+    ],
+    "min_trigger_interval_s": [
+      1.0,
+      "HYP prudente; Sony: ~2.5 a 5 i/s selon sequence FOCUS/TRIGGER"
+    ],
+    "exposure_s": [
+      [
+        0.0005,
+        0.001
+      ],
+      "HYP: 1/2000 et 1/1000"
+    ],
+    "turn_efficiency": [
+      0.8,
+      "HYP: fraction du temps sur ligne utile"
+    ],
+    "raw_bits": [
+      14,
+      "HYP"
+    ]
   },
   "launch_recovery": {
-    "_recovery_kg_note": ["parachute + ejection estime 0.2 kg pour FW (EST); VTOL: 0 (atterrissage vertical)", "EST"],
-    "catapult_stroke_m": [[2.0, 3.0, 4.0], "HYP"],
-    "launch_speed_factor": [1.25, "HYP: V_lanc >= 1.25 Vs a la densite chaude du site"],
-    "peak_to_mean_accel": [1.6, "HYP: catapulte elastique, profil non constant"],
-    "parachute_descent_ms": [[4.0, 5.0, 6.0], "HYP"],
-    "belly_landing_speed_factor": [1.1, "HYP"]
+    "_recovery_kg_note": [
+      "parachute + ejection estime 0.2 kg pour FW (EST); VTOL: 0 (atterrissage vertical)",
+      "EST"
+    ],
+    "catapult_stroke_m": [
+      [
+        2.0,
+        3.0,
+        4.0
+      ],
+      "HYP"
+    ],
+    "launch_speed_factor": [
+      1.25,
+      "HYP: V_lanc >= 1.25 Vs a la densite chaude du site"
+    ],
+    "peak_to_mean_accel": [
+      1.6,
+      "HYP: catapulte elastique, profil non constant"
+    ],
+    "parachute_descent_ms": [
+      [
+        4.0,
+        5.0,
+        6.0
+      ],
+      "HYP"
+    ],
+    "belly_landing_speed_factor": [
+      1.1,
+      "HYP"
+    ]
+  },
+  "endurance_study": {
+    "_note": "Etude de faisabilite 2 h (D-06). Cellules et cellules de batterie hors short-list v0.1 pour explorer l'espace de conception.",
+    "cells": [
+      {
+        "id": "P45B",
+        "Wh": 16.2,
+        "g": 70,
+        "overhead": 0.1,
+        "usable": 0.85,
+        "src": "SRC R04"
+      },
+      {
+        "id": "P50B",
+        "Wh": 18.0,
+        "g": 69,
+        "overhead": 0.1,
+        "usable": 0.85,
+        "src": "SRC R30 (P50B: 5,0 Ah, 3,6 V, 18 Wh, 260 Wh/kg; masse derivee 69 g, a confirmer sur fiche Molicel)"
+      },
+      {
+        "id": "SEMI-SOLIDE-350",
+        "Wh": 40.0,
+        "g": 114,
+        "overhead": 0.12,
+        "usable": 0.85,
+        "src": "HYP: classe 350 Wh/kg cellule (R30 liste 340 a 417 Wh/kg, 1 a 7C, 250 a 800 cycles); produit non selectionne"
+      }
+    ],
+    "aero_variants": [
+      {
+        "id": "nominal",
+        "CD0_offset": 0.0,
+        "eta": 0.51,
+        "src": "cas nominal v0.1"
+      },
+      {
+        "id": "cellule propre",
+        "CD0_offset": -0.01,
+        "eta": 0.51,
+        "src": "HYP: CD0 0.030 (cellule optimisee endurance)"
+      },
+      {
+        "id": "cellule propre + helice optimisee",
+        "CD0_offset": -0.01,
+        "eta": 0.57,
+        "src": "HYP: eta global 0.57 (helice de grand diametre a faible vitesse)"
+      }
+    ],
+    "airframes": [
+      {
+        "id": "Believer-1960",
+        "type": "FW",
+        "S_m2": 0.51,
+        "b_m": 1.96,
+        "mtow_kg": 5.5,
+        "dry_kg": 1.8,
+        "src": "R11/R12; dry H06 + parachute"
+      },
+      {
+        "id": "Classe-FW-2.6m",
+        "type": "FW",
+        "S_m2": 0.8,
+        "b_m": 2.6,
+        "mtow_kg": 10.0,
+        "dry_kg": 2.4,
+        "src": "HYP: cellule generique 2,6 m, AR 8,5; aucune cellule commerciale verifiee"
+      },
+      {
+        "id": "Classe-FW-3.0m",
+        "type": "FW",
+        "S_m2": 0.85,
+        "b_m": 3.0,
+        "mtow_kg": 12.0,
+        "dry_kg": 2.8,
+        "src": "HYP: cellule generique 3,0 m, AR 10,6"
+      },
+      {
+        "id": "MFE-Fighter-VTOL",
+        "type": "VTOL",
+        "S_m2": 0.725,
+        "b_m": 2.43,
+        "mtow_kg": 11.5,
+        "dry_kg": 3.6,
+        "prop_in": 18,
+        "dCD0": 0.006,
+        "src": "R18; dry H07"
+      },
+      {
+        "id": "Classe-VTOL-2.7m",
+        "type": "VTOL",
+        "S_m2": 0.84,
+        "b_m": 2.69,
+        "mtow_kg": 10.0,
+        "dry_kg": 4.5,
+        "prop_in": 18,
+        "dCD0": 0.006,
+        "src": "HYP: geometrie DeltaQuad Evo (R28); masse seche = 4,8 kg a vide (R28) - 0,32 kg d'avionique comptee a part"
+      }
+    ]
   }
 }

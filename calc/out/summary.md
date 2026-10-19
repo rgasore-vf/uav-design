@@ -94,6 +94,56 @@ Masse avionique: 320 g; charge utile dimensionnante: 500 g (reelle estimee 436 g
 | VTOL | pessimiste | Believer-QuadPlane | 45 | AUCUNE |  |  |
 | VTOL | pessimiste | Believer-QuadPlane | 60 | AUCUNE |  |  |
 
+## Etude endurance: 120 min de vol + 30 % de reserve (vent 5 m/s)
+
+| Cellule | Aero | Cellules batterie | Batterie | Masse (kg) | Wh nominal | P palier (W) | Acquisition (min) |
+|---|---|---|---|---|---|---|---|
+| Believer-1960 | nominal | P45B | AUCUNE |  |  |  |  |
+| Believer-1960 | nominal | P50B | AUCUNE |  |  |  |  |
+| Believer-1960 | nominal | SEMI-SOLIDE-350 | 6S3P SEMI-SOLIDE-350 | 4.92 | 720.0 | 171.0 | 72.0 |
+| Believer-1960 | cellule propre | P45B | 6S6P P45B | 5.39 | 583.0 | 167.0 | 74.0 |
+| Believer-1960 | cellule propre | P50B | 6S5P P50B | 4.9 | 540.0 | 148.0 | 72.0 |
+| Believer-1960 | cellule propre | SEMI-SOLIDE-350 | 6S2P SEMI-SOLIDE-350 | 4.15 | 480.0 | 121.0 | 69.0 |
+| Believer-1960 | cellule propre + helice optimisee | P45B | 6S5P P45B | 4.93 | 486.0 | 136.0 | 72.0 |
+| Believer-1960 | cellule propre + helice optimisee | P50B | 6S5P P50B | 4.9 | 540.0 | 134.0 | 72.0 |
+| Believer-1960 | cellule propre + helice optimisee | SEMI-SOLIDE-350 | 6S2P SEMI-SOLIDE-350 | 4.15 | 480.0 | 111.0 | 69.0 |
+| Classe-FW-2.6m | nominal | P45B | 6S10P P45B | 7.84 | 972.0 | 255.0 | 72.0 |
+| Classe-FW-2.6m | nominal | P50B | 6S8P P50B | 6.86 | 864.0 | 212.0 | 68.0 |
+| Classe-FW-2.6m | nominal | SEMI-SOLIDE-350 | 6S3P SEMI-SOLIDE-350 | 5.52 | 720.0 | 157.0 | 62.0 |
+| Classe-FW-2.6m | cellule propre | P45B | 6S7P P45B | 6.45 | 680.0 | 165.0 | 67.0 |
+| Classe-FW-2.6m | cellule propre | P50B | 6S6P P50B | 5.95 | 648.0 | 149.0 | 65.0 |
+| Classe-FW-2.6m | cellule propre | SEMI-SOLIDE-350 | 6S3P SEMI-SOLIDE-350 | 5.52 | 720.0 | 136.0 | 63.0 |
+| Classe-FW-2.6m | cellule propre + helice optimisee | P45B | 6S6P P45B | 5.99 | 583.0 | 136.0 | 65.0 |
+| Classe-FW-2.6m | cellule propre + helice optimisee | P50B | 6S5P P50B | 5.5 | 540.0 | 124.0 | 63.0 |
+| Classe-FW-2.6m | cellule propre + helice optimisee | SEMI-SOLIDE-350 | 6S2P SEMI-SOLIDE-350 | 4.75 | 480.0 | 105.0 | 59.0 |
+| Classe-FW-3.0m | nominal | P45B | 6S9P P45B | 7.78 | 875.0 | 230.0 | 70.0 |
+| Classe-FW-3.0m | nominal | P50B | 6S8P P50B | 7.26 | 864.0 | 209.0 | 68.0 |
+| Classe-FW-3.0m | nominal | SEMI-SOLIDE-350 | 6S3P SEMI-SOLIDE-350 | 5.92 | 720.0 | 158.0 | 62.0 |
+| Classe-FW-3.0m | cellule propre | P45B | 6S7P P45B | 6.85 | 680.0 | 161.0 | 67.0 |
+| Classe-FW-3.0m | cellule propre | P50B | 6S6P P50B | 6.35 | 648.0 | 146.0 | 64.0 |
+| Classe-FW-3.0m | cellule propre | SEMI-SOLIDE-350 | 6S3P SEMI-SOLIDE-350 | 5.92 | 720.0 | 132.0 | 62.0 |
+| Classe-FW-3.0m | cellule propre + helice optimisee | P45B | 6S6P P45B | 6.39 | 583.0 | 133.0 | 64.0 |
+| Classe-FW-3.0m | cellule propre + helice optimisee | P50B | 6S5P P50B | 5.9 | 540.0 | 120.0 | 62.0 |
+| Classe-FW-3.0m | cellule propre + helice optimisee | SEMI-SOLIDE-350 | 6S2P SEMI-SOLIDE-350 | 5.15 | 480.0 | 101.0 | 57.0 |
+| MFE-Fighter-VTOL | nominal | P45B | AUCUNE |  |  |  |  |
+| MFE-Fighter-VTOL | nominal | P50B | AUCUNE |  |  |  |  |
+| MFE-Fighter-VTOL | nominal | SEMI-SOLIDE-350 | 6S5P SEMI-SOLIDE-350 | 8.25 | 1200.0 | 318.0 | 76.0 |
+| MFE-Fighter-VTOL | cellule propre | P45B | AUCUNE |  |  |  |  |
+| MFE-Fighter-VTOL | cellule propre | P50B | 6S14P P50B | 10.8 | 1512.0 | 401.0 | 82.0 |
+| MFE-Fighter-VTOL | cellule propre | SEMI-SOLIDE-350 | 6S4P SEMI-SOLIDE-350 | 7.48 | 960.0 | 238.0 | 74.0 |
+| MFE-Fighter-VTOL | cellule propre + helice optimisee | P45B | AUCUNE |  |  |  |  |
+| MFE-Fighter-VTOL | cellule propre + helice optimisee | P50B | 6S10P P50B | 8.97 | 1080.0 | 277.0 | 78.0 |
+| MFE-Fighter-VTOL | cellule propre + helice optimisee | SEMI-SOLIDE-350 | 6S4P SEMI-SOLIDE-350 | 7.48 | 960.0 | 215.0 | 74.0 |
+| Classe-VTOL-2.7m | nominal | P45B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | nominal | P50B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | nominal | SEMI-SOLIDE-350 | 6S6P SEMI-SOLIDE-350 | 9.92 | 1440.0 | 379.0 | 77.0 |
+| Classe-VTOL-2.7m | cellule propre | P45B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | cellule propre | P50B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | cellule propre | SEMI-SOLIDE-350 | 6S5P SEMI-SOLIDE-350 | 9.15 | 1200.0 | 289.0 | 75.0 |
+| Classe-VTOL-2.7m | cellule propre + helice optimisee | P45B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | cellule propre + helice optimisee | P50B | AUCUNE |  |  |  |  |
+| Classe-VTOL-2.7m | cellule propre + helice optimisee | SEMI-SOLIDE-350 | 6S4P SEMI-SOLIDE-350 | 8.38 | 960.0 | 230.0 | 73.0 |
+
 ## Controles independants
 
 - FM x eta_ME implicite du banc MN4014 16x5.4 (rho banc suppose 1.20): 0.599 (modele nominal 0.68x0.85 = 0.578)
