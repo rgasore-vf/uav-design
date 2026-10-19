@@ -1,6 +1,6 @@
 # Dossier 02 : Cahier des charges
 
-Version 0.2, 19 octobre 2026. Statut : provisoire. Révision v0.2 : MIS-02 porté à 2 h de vol avec 30 % de réserve (voir le Dossier 03b). Les exigences notées **P** dépendent des décisions D-01 à D-05 (`registres/decisions.csv`).
+Version 0.3, 19 octobre 2026. Statut : provisoire. Révision v0.2 : MIS-02 porté à 2 h de vol avec 30 % de réserve (Dossier 03b). Révision v0.3 : décisions D-01 à D-04 du 2026-10-19 ; les exigences du **prototype v1** sont marquées « v1 » (Dossier 04b). Les exigences notées **P** dépendent des décisions D-01 à D-05 (`registres/decisions.csv`).
 
 Méthodes de vérification : **A** Analyse, **E** Essai, **I** Inspection, **D** Démonstration en vol.
 
@@ -28,15 +28,15 @@ Conséquence : **la décision D-01, durée ou surface d'acquisition par sortie, 
 
 | ID | Exigence | Valeur | Statut | Vérif. |
 |---|---|---|---|---|
-| MIS-01 | Rayon d'action en transit | 20 km aller + 20 km retour | P (D-01) | A, D |
-| MIS-02 | Endurance | **2 h de vol avec 30 % de réserve** (révision du 2026-10-19) ; l'acquisition remplit le temps restant, soit environ 57 à 82 min | Confirmée (utilisateur) | A, D |
+| MIS-01 | Transit | **v1 : 20 à 30 km au total (référence 2 × 15 km)** ; cible ultérieure : 2 × 20 km | Confirmée (D-01) | A, D |
+| MIS-02 | Endurance | **v1 : mission de référence avec 30 min d'acquisition et 30 % de réserve** (environ 70 min de vol) ; cible de la version suivante : 2 h de vol avec 30 % de réserve (Dossier 03b) | Confirmée (utilisateur) | A, D |
 | MIS-03 | Réserve d'énergie à l'atterrissage | ≥ 30 % de l'énergie utilisable | Confirmée | A, E (journaux) |
 | MIS-04 | Hauteur maximale | 1000 m AGL ; altitude de site 960 m AMSL | Confirmée | A, D |
 | MIS-05 | Conditions atmosphériques de dimensionnement | Jusqu'à ISA+21 °C (30 °C au sol) | P | A |
 | MIS-06 | Vent moyen admissible pour la mission de référence | 8 m/s (cible), à arbitrer avec MIS-02 | P | A, D |
 | MIS-07 | Vitesse de décrochage en configuration d'acquisition | V_acq ≥ 1,3 Vs à la masse et la densité du vol | Confirmée | A, E |
 | PL-01 | Charge utile | ILX-LR1 + objectif + support + câblage ≤ 500 g | Confirmée | I (pesée) |
-| PL-02 | Résolution au sol | 3 cm/px (hypothèse D-02) | P | A, D |
+| PL-02 | Résolution au sol | **10 à 12 cm/px** ; hauteur de 425 à 765 m AGL selon la focale (D-09) | Confirmée (D-02) | A, D |
 | PL-03 | Flou de bougé | ≤ 0,5 px à la vitesse d'acquisition | Proposée | A, D |
 | PL-04 | Déclenchement | Via le terminal Power and Control : FOCUS puis TRIGGER, en collecteur ouvert | Confirmée (R08) | E (banc) |
 | PL-05 | Retour d'exposition | Signal EXPOSURE horodaté par l'autopilote pour chaque image | Confirmée | E, D |
@@ -45,7 +45,7 @@ Conséquence : **la décision D-01, durée ou surface d'acquisition par sortie, 
 | PL-08 | Température caméra | Habitacle ≤ 50 °C en fonctionnement (spécification 0 à 50 °C, R09) | Confirmée | E (thermocouple) |
 | NAV-01 | Autopilote | ArduPilot Plane, CUAV X7+ Pro existant | Proposée (ADR-003) | I |
 | NAV-02 | Capteur de vitesse air | Obligatoire (transitions VTOL, protection décrochage) | Confirmée | E |
-| NAV-03 | Géoréférencement | Points de contrôle au sol obligatoires en validation ; PPK en phase 2 | P (D-02) | D |
+| NAV-03 | Géoréférencement | **v1 : GNSS standard**, précision absolue mesurée sur points de contrôle au sol ; RTK ou PPK dans la version suivante | Confirmée (D-02) | D |
 | COM-01 | Liaison C2 et télémétrie | Couverture à 20 km avec marge de bilan de liaison ≥ 10 dB en visibilité directe | Proposée | A, E |
 | COM-02 | Conformité radio | Bande et puissance autorisées par l'ARPTC | Confirmée | I (autorisation écrite) |
 | COM-03 | Perte de liaison | Retour automatique, puis atterrissage ou parachute selon la configuration | Confirmée | E (SITL), D |
@@ -54,7 +54,7 @@ Conséquence : **la décision D-01, durée ou surface d'acquisition par sortie, 
 | STR-01 | Charges de calcul en vol | +3,8 g limite, coefficient 1,5 pour la charge extrême | Proposée | A, E |
 | STR-02 | Charges de lancement (A) | Fixations batterie et caméra dimensionnées pour l'accélération de crête de la catapulte retenue | Confirmée | A, E (accéléromètre) |
 | STR-03 | Matériaux | Toute pièce structurelle imprimée doit avoir des données matériau et un essai à 55 °C | Proposée | E |
-| OPS-01 | Lancement et récupération | Sans piste ; surface disponible à définir | P (D-04) | D |
+| OPS-01 | Lancement et récupération | Zone d'environ 100 m ; catapulte ; patins si les abords sont dégagés, parachute sinon (D-08) | Partielle (D-04) | D |
 | OPS-02 | Mise en œuvre | De l'arrivée au décollage en ≤ 20 min par 2 personnes | Proposée | D |
 | MNT-01 | Réparabilité terrain | Pièces de rechange critiques en stock ; réparation d'une aile ou d'un rotor en < 1 h | Proposée | D |
 | REG-01 | Autorisation aéronautique | Autorisation préalable de l'AAC RDC avant tout vol | Confirmée (R26, source secondaire) | I |

@@ -21,8 +21,30 @@ elif __name__ == "__main__" and len(sys.argv) > 1:
 else:
     PFILE = DEFAULT_PARAMS
 OUT = os.path.join(HERE, "out")
-with open(PFILE, encoding="utf-8") as _f:
-    P = json.load(_f)
+def _deep_merge(base, over):
+    """Fusion recursive: les cles de `over` remplacent celles de `base`."""
+    out = dict(base)
+    for k, val in over.items():
+        if isinstance(val, dict) and isinstance(out.get(k), dict):
+            out[k] = _deep_merge(out[k], val)
+        else:
+            out[k] = val
+    return out
+
+
+def load_params(path):
+    """Charge un fichier de parametres. Un fichier de scenario peut declarer
+    "_base": chemin relatif d'un fichier de base, dont il ne surcharge que
+    les cles fournies (les listes sont remplacees en bloc)."""
+    with open(path, encoding="utf-8") as f:
+        p = json.load(f)
+    if "_base" in p:
+        base = load_params(os.path.join(os.path.dirname(os.path.abspath(path)), p["_base"]))
+        p = _deep_merge(base, {k: v for k, v in p.items() if k != "_base"})
+    return p
+
+
+P = load_params(PFILE)
 
 def v(x):
     """Valeur d'un champ [valeur, statut] ou valeur brute."""
@@ -97,6 +119,9 @@ def best_speed(m, rho, S, AR, CD0, e, eta, vmin, wind=0.0, vmax=35.0):
 
 # ---------------------------------------------------------------- VTOL stationnaire
 VT = {k: v(x) for k, x in P["vtol"].items()}
+REF = dict(fw_id="Believer-1960", fw_batt="LI-6S4P", fw_dry_range=[1.4, 1.9],
+           vt_id="MFE-Fighter-VTOL", vt_batt="LI-6S8P")
+REF.update({k: v(x) for k, x in P.get("reference", {}).items()})
 def hover_power(m, rho, n, prop_in, FM, eta):
     A = n * math.pi * (prop_in * 0.0254 / 2) ** 2
     T = m * G
@@ -273,7 +298,7 @@ def main(out_dir=None, verbose=False):
     for f in cam["focal_mm"]:
         for mode, of, os_ in [("ortho", cam["overlap_fwd"][0], cam["overlap_side"][0]),
                               ("3D", cam["overlap_fwd"][1], cam["overlap_side"][1])]:
-            for H in [100, 150, 200, 300]:
+            for H in cam.get("heights_m", [100, 150, 200, 300]):
                 gsd = pitch_mm * H / f  # m/px car pitch en mm et f en mm
                 Wf = gsd * cam["px_w"]; Lf = gsd * cam["px_h"]
                 bfwd = Lf * (1 - of); line = Wf * (1 - os_)
@@ -314,9 +339,9 @@ def main(out_dir=None, verbose=False):
     # ---------------------------------------------------------------- sensibilite (un facteur a la fois)
     def ref_fw(over=None):
         over = over or {}
-        c = [x for x in P["fixed_wing_candidates"] if x["id"] == "Believer-1960"][0]
+        c = [x for x in P["fixed_wing_candidates"] if x["id"] == REF["fw_id"]][0]
         case = case_vals(1); case.update({k: over[k] for k in ("CD0", "e", "eta", "CLmax") if k in over})
-        bt = dict([b for b in BATTS if b["id"] == over.get("batt", "LI-6S4P")][0])
+        bt = dict([b for b in BATTS if b["id"] == over.get("batt", REF["fw_batt"])][0])
         if "usable" in over: bt["use_Wh"] = bt["Wh"] * over["usable"]
         dry = over.get("dry", c["dry_kg"][1]) + c.get("recovery_kg", 0.0)
         m = mass_total(dry, bt)
@@ -325,9 +350,9 @@ def main(out_dir=None, verbose=False):
 
     def ref_vt(over=None):
         over = over or {}
-        c = [x for x in P["vtol_candidates"] if x["id"] == "MFE-Fighter-VTOL"][0]
+        c = [x for x in P["vtol_candidates"] if x["id"] == REF["vt_id"]][0]
         case = case_vals(1); case.update({k: over[k] for k in ("CD0", "e", "eta") if k in over})
-        bt = dict([b for b in BATTS if b["id"] == over.get("batt", "LI-6S8P")][0])
+        bt = dict([b for b in BATTS if b["id"] == over.get("batt", REF["vt_batt"])][0])
         if "usable" in over: bt["use_Wh"] = bt["Wh"] * over["usable"]
         vt = dict(n=4, prop_in=c["prop_in"], dCD0=over.get("dCD0", c["dCD0_vtol"][1]),
                   FM=over.get("FM", VT["figure_of_merit"][1]), eta_h=VT["eta_motor_esc_hover"][1],
@@ -339,11 +364,11 @@ def main(out_dir=None, verbose=False):
     sens = []
     eta_n = AC["eta_prop"][1] * AC["eta_motor_esc"][1]
     fw_tests = [("CD0", 0.030, 0.050), ("e", 0.85, 0.70), ("eta", AC["eta_prop"][0] * AC["eta_motor_esc"][0], AC["eta_prop"][2] * AC["eta_motor_esc"][2]),
-                ("dry", 1.4, 1.9), ("usable", 0.90, 0.75), ("wind", 0, 10), ("map", 15, 60)]
+                ("dry", REF["fw_dry_range"][0], REF["fw_dry_range"][1]), ("usable", 0.90, 0.75), ("wind", 0, 10), ("map", 15, 60)]
     base_fw, m_fw = ref_fw()
     for k, lo, hi in fw_tests:
         a, _ = ref_fw({k: lo}); b_, _ = ref_fw({k: hi})
-        sens.append(dict(prototype="A Believer FW / LI-6S4P", parametre=k, bas=r(lo, 3), haut=r(hi, 3),
+        sens.append(dict(prototype=f"A {REF['fw_id']} / {REF['fw_batt']}", parametre=k, bas=r(lo, 3), haut=r(hi, 3),
                          marge_ref_Wh=r(base_fw, 0), marge_bas_Wh=r(a, 0), marge_haut_Wh=r(b_, 0),
                          amplitude_Wh=r(abs(a - b_), 0)))
     vt_tests = fw_tests[:3] + [("dry", 3.0, 4.5), ("usable", 0.90, 0.75), ("wind", 0, 10), ("map", 15, 60),
@@ -351,7 +376,7 @@ def main(out_dir=None, verbose=False):
     base_vt, m_vt = ref_vt()
     for k, lo, hi in vt_tests:
         a, _ = ref_vt({k: lo}); b_, _ = ref_vt({k: hi})
-        sens.append(dict(prototype="B Fighter VTOL / LI-6S8P", parametre=k, bas=r(lo, 3), haut=r(hi, 3),
+        sens.append(dict(prototype=f"B {REF['vt_id']} / {REF['vt_batt']}", parametre=k, bas=r(lo, 3), haut=r(hi, 3),
                          marge_ref_Wh=r(base_vt, 0), marge_bas_Wh=r(a, 0), marge_haut_Wh=r(b_, 0),
                          amplitude_Wh=r(abs(a - b_), 0)))
     sens.sort(key=lambda d: (d["prototype"], -d["amplitude_Wh"]))

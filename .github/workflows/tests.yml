@@ -17,4 +17,5 @@ jobs:
       - name: Sorties à jour
         run: |
           python calc/model.py > /dev/null
-          git diff --exit-code calc/out || (echo "calc/out n'est pas à jour : lancer make calc" && exit 1)
+          python calc/model.py calc/scenarios/prototype_moose_v1.json calc/out_prototype_v1 > /dev/null
+          git diff --exit-code calc/out calc/out_prototype_v1 || (echo "Sorties de calcul pas à jour : lancer make calc" && exit 1)

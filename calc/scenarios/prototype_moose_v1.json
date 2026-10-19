@@ -1,0 +1,30 @@
+{
+  "_base": "../params.json",
+  "_meta": {
+    "version": "0.3",
+    "date": "2026-10-19",
+    "note": "Scenario du prototype v1 (decisions utilisateur du 2026-10-19). Ne surcharge que les cles ci-dessous; le reste vient de calc/params.json."
+  },
+  "mission": {
+    "transit_one_way_km": [15.0, "SRC utilisateur: 20 a 30 km au total pour commencer; reference 2 x 15 km, variante 2 x 10 km"],
+    "cruise_agl_m": [700, "HYP: GSD 11 cm avec objectif 24 mm (637 a 765 m AGL pour 10 a 12 cm)"],
+    "target_flight_min": [0, "Objectif 2 h reporte a la version suivante; le prototype v1 est dimensionne sur la mission ci-dessus"]
+  },
+  "fixed_wing_candidates": [
+    {"id": "Moose-patins", "S_m2": 0.365, "b_m": 1.60, "mtow_kg": 4.5, "dry_kg": [1.0, 1.2, 1.5], "recovery_kg": 0.0,
+     "src": "R01; fuselage avec patins TPU (R01); masse seche H06-Moose HYP"},
+    {"id": "Moose-parachute", "S_m2": 0.365, "b_m": 1.60, "mtow_kg": 4.5, "dry_kg": [1.0, 1.2, 1.5], "recovery_kg": 0.2,
+     "src": "idem + parachute estime 0,2 kg (EST)"},
+    {"id": "Believer-1960", "S_m2": 0.51, "b_m": 1.96, "mtow_kg": 5.5, "dry_kg": [1.4, 1.6, 1.9], "recovery_kg": 0.2,
+     "src": "R11, R12; alternative"}
+  ],
+  "reference": {
+    "fw_id": ["Moose-patins", "Prototype v1 retenu par l'utilisateur"],
+    "fw_batt": ["LI-6S4P", "Pack de reference du prototype v1"],
+    "fw_dry_range": [[1.0, 1.5], "HYP"]
+  },
+  "camera": {
+    "focal_mm": [[16, 20, 24], "24 mm: SRC R24; 16 et 20 mm: focales a etudier, objectifs non selectionnes"],
+    "heights_m": [[300, 425, 510, 531, 637, 700, 765], "Bornes de hauteur pour GSD 10-12 cm selon la focale"]
+  }
+}

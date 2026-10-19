@@ -98,6 +98,16 @@ class TestEndurance(unittest.TestCase):
         self.assertLessEqual(s["masse_kg"], af["mtow_kg"])
 
 
+class TestScenario(unittest.TestCase):
+    def test_overlay_overrides_only_given_keys(self):
+        base = model.load_params(os.path.join(ROOT, "calc", "params.json"))
+        sc = model.load_params(os.path.join(ROOT, "calc", "scenarios", "prototype_moose_v1.json"))
+        self.assertEqual(model.v(sc["mission"]["transit_one_way_km"]), 15.0)
+        self.assertEqual(model.v(sc["mission"]["reserve_frac"]), model.v(base["mission"]["reserve_frac"]))
+        self.assertEqual(sc["vtol_candidates"], base["vtol_candidates"])
+        self.assertTrue(any(c["id"] == "Moose-patins" for c in sc["fixed_wing_candidates"]))
+
+
 class TestOutputs(unittest.TestCase):
     def test_main_writes_consistent_csv(self):
         with tempfile.TemporaryDirectory() as d:
