@@ -1,0 +1,2099 @@
+{
+  "plan": "Définir l'architecture aérodynamique et comparer les cellules (Moose de Flightory, Believer 1960, Ranger 2000) pour valider la capacité d'emport de 500 g et le volume batterie.\nÉtablir la note de calcul complète (densité de l'air de 960m à 1960m, finesse, vitesse de décrochage, puissance requise pour l'autonomie de 40 km).\nDimensionner la chaîne de propulsion électrique (moteur Brushless, hélice, ESC avec marge de 25 %) et la batterie Li-ion haute densité d'énergie (pack 4S ou 6S).\nConcevoir l'intégration de la charge utile (Sony ILX-LR1, objectif fixe, nacelle de stabilisation) et le câblage de l'autopilote compatible ArduPilot (Cube Orange+, GNSS RTK, Pitot).\nRédiger la nomenclature détaillée, les étapes de fabrication/assemblage, et le protocole d'essais en vol progressifs avec la gestion des risques associés.",
+  "nodes": [
+    {
+      "id": "autopilot_cube_orange",
+      "name": "Flight Controller",
+      "pins": [
+        "I2C",
+        "CAN1",
+        "CAN2",
+        "SPI",
+        "USART1",
+        "USART2",
+        "GPS1",
+        "GPS2",
+        "MAIN1-8",
+        "AUX1-6",
+        "POWER1",
+        "POWER2",
+        "USB"
+      ],
+      "type": "mcu",
+      "partId": "5d5aaa32-ded5-49b7-af71-95629bf700e8",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Cube+Orange%2B+with+ADSB+Carrier+Board&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://imgs.search.brave.com/25rEzV-ODFFFoHGpU87L9MjVtF-0ypgtymnK7EDtu8I/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91YXZn/YXJhZ2UuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIzLzEw/LzIucG5n",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B07HMD9ZVL?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$108.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/1005010571527674.html?pdp_npi=6%40dis%21USD%21784.68%21768.99%21%21%215294.75%215188.85%21%40214114e317797190687798247e0eb8%2112000052855382703%21affd%21%21%21%211%210%21",
+            "price": "$768.99",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-cube-orange-with-adsb-carrier-board.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B07HMGDCPJ?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$360",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "94.5x44.3x17.3mm",
+      "description": "High-performance flight controller running ArduPilot/PX4 with triple redundancy.",
+      "productName": "Cube Orange+ with ADSB Carrier Board",
+      "purchaseUrl": "https://www.getfpv.com/cube-orange-plus-with-ads-b-carrier-board.html",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/NdpwztbAIgDMmxGbP8fFks7yUFfsHjzlImSYmA68h7xlMRgzueFsRgokQ9f9hcpVKttxtQE2VzIoqkXJXrpOr6uR3zv7mP4CDO9CddoFf4t0QE5DXPy8Pgjhz4irfQSEjEGUmy5yF3A5gJ9h3NYjLMgqIMqa3zcpq5E2BC3W5EbV40Dm9buQxWpZzw1lbX8Zm2kZtNIa4KyDieNjsH7IU6Yv8StELKVvT9r4eFAaXPGhwHsgaDqdNcmY116r3GC2YvsOopeiiZPhJrV0cwgOQDSkW93v7gVKDqPkXyZF1oSWa6wSAOeznMFVlVZDPaltZkqGLMVaEOnyqX3NC9o4uz1eB0pLTb4w06WBZRtK3lLe8aQsYjUo2tRJJiG60X76dKCyuwMylEsLNV2KxkpG4K2Xw3kZcJYX2yuHOvMWR8H8ZqnQjuPhacWM6jWbqXaN9KJqcjXpPlzf0UqxwSrZ8bAfRBJ0RWYV5kap2XJnK3qPoooA4uFSeW1f3UVkKwbcFcfTer8A2Blrib9WgdcNZThnzJgnWw7HQw8x3b9mwXn2pogvv8iqdoWugf2hTMkigWMJJaUQgRsN0NCdHbbj1SGCHw3591aaudt1wOgspaeASoyDBVK8eaK0NYYV9lDz24ztaQNqLlXHFed7lKvnNSWT0th4QIe0q237VPaPY6mvKjYktbnDTZ6VPlCCDT3iRj5Bevr4qUpqssS9QfmS0keTDhlXNG3CzhQo85IS9zcdeZ1tuEscZfEG5tcKNwkGLmp0i9Khfixrd5njRZP7Q7m6ye28sJUR1krYaqcnqzxBJNQAPRYtIyGuOBMRJ5gKcBJP0JJRpeElBYNGBlh8luCnfEPMGohacLA37w1fQjjZaZghlpi03e1xrt7LAUqZqiJntm7pvD78GI0wPrZmev9yBff3NCu8G4F8o1qYcT4rwISPk6BHrR2E9E0NbAOQjbEdAT5bpglHOOheRluBS5cKhxjvibEberTs8rgleDfJl",
+      "estimatedCost": 270
+    },
+    {
+      "id": "gnss_rtk_here4",
+      "name": "GNSS RTK Module",
+      "pins": [
+        "CAN",
+        "5V",
+        "GND"
+      ],
+      "type": "sensor",
+      "partId": "fa9e9878-f9da-48a9-b650-922f75b0a846",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=CubePilot+Here4+RTK+GNSS&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://imgs.search.brave.com/L6pe-RVn0nAa2benv77nJ58ZmLedLY27VbD86adIerk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/cm9ib3RzaG9wLmNv/bS9jZG4vc2hvcC9m/aWxlcy9jdWJlcGls/b3QtaGVyZTMtZ3Bz/LW1vZHVsZS1pc3Rh/bmQtaW1nNy53ZWJw/P3Y9MTcyMDUwNzgy/OSZ3aWR0aD0xMDI0",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-cubepilot-here3-gnss.html",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "68x68x16mm",
+      "productName": "CubePilot Here4 RTK GNSS",
+      "purchaseUrl": "https://www.getfpv.com/cubepilot-here4-standard-gnss.html",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3c39yD7",
+      "estimatedCost": 225,
+      "amazonUrl": "https://www.amazon.com/s?k=CubePilot%20Here3%2B%20GNSS&tag=blueprintam-20"
+    },
+    {
+      "id": "airspeed_sensor_ms5525",
+      "name": "Digital Airspeed Sensor",
+      "pins": [
+        "SDA",
+        "SCL",
+        "5V",
+        "GND"
+      ],
+      "type": "sensor",
+      "partId": "6025a2f9-a711-4a6b-b5ea-0d10f67a44ee",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Mateksys+Digital+Airspeed+Sensor+AS-F4525&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/41GCeSHTweL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0F1LTRPPK?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$65.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-matek-digital-airspeed-sensor-as-b.html",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "20x20x10mm",
+      "productName": "Mateksys Digital Airspeed Sensor AS-F4525",
+      "purchaseUrl": "https://www.getfpv.com/matek-digital-airspeed-sensor-as-f4525.html",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c34BCIDR",
+      "estimatedCost": 23
+    },
+    {
+      "id": "rfd900_telemetry",
+      "name": "Primary Long Range Telemetry",
+      "pins": [
+        "TX",
+        "RX",
+        "RTS",
+        "CTS",
+        "5V",
+        "GND"
+      ],
+      "type": "module",
+      "partId": "fdcd4049-2f94-43de-bc82-4ee581ee02c1",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=RFD900ux+Ultra-lite+Telemetry+Modem&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/41BJXxcW9IL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B07G2SF575?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$139",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-rfd900x-telemetry-modem.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B078NHWBK2?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$389",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "19x30x4.5mm",
+      "productName": "RFD900ux Ultra-lite Telemetry Modem",
+      "purchaseUrl": "https://store.rfdesign.com.au/rfd900ux-modem-bundle/",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c2zOtZDb",
+      "estimatedCost": 125
+    },
+    {
+      "id": "backup_4g_dongle",
+      "name": "Secondary LTE Backup Link",
+      "pins": [
+        "USB_VBUS",
+        "USB_D-",
+        "USB_D+",
+        "GND"
+      ],
+      "type": "module",
+      "partId": "8675a54f-6df9-4668-857e-c04d36a08cdd",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Huawei+E8372h-320+4G+LTE+USB+Dongle&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31m41rSq9SL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B085L4LV6Y?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$52.93",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "94x30x14mm",
+      "productName": "Huawei E8372h-320 4G LTE USB Dongle",
+      "purchaseUrl": "https://www.amazon.com/dp/B085L4LV6Y?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+      "estimatedCost": 65,
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3muGXg5"
+    },
+    {
+      "id": "moter_propulsion",
+      "name": "Brushless Motor",
+      "pins": [
+        "PHASE_A",
+        "PHASE_B",
+        "PHASE_C"
+      ],
+      "type": "actuator",
+      "partId": "d865257f-e661-46d2-8e0c-e09a54a5adae",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=T-Motor+AT3520+KV850&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/21vU4Zcsl6L._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.aliexpress.com/item/1005008491861516.html?pdp_npi=6%40dis%21USD%2174.11%2174.11%21%21%2174.11%2174.11%21%4021013cc017794367798412923e10e2%2112000045380948611%21affd%21%21%21%211%210%21",
+            "price": "$74.11",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0GHMVP9GW?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$188.89",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0H2Z1ZG1K?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$200.11",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "42.5x42.5x59mm",
+      "description": "Large BLDC motor for primary vertical thrust.",
+      "productName": "T-Motor AT3520 KV850",
+      "purchaseUrl": "https://www.getfpv.com/t-motor-at3520-long-shaft-brushless-motor.html",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x2lAMEl06wgNdTSMiT7cNG4HIdW0JxHsheoAS1ljPRrz4DtzW9rCPlvXdzs2IubcGBMIbdECRhN9k2lHSgwQn22q6gASHjWQIGllWNsRRNVp7iX8pR2YeWaHAW5u9ffwn5k343UdtZXVv1Mul5j1bKiFbtr2BqtKxjb8LWF1p4mD82kmzFIe0Za2fzafS8tadLO8tPcrH04hD5H7Fh7VqXy8uhuJRyQcRwa1SV2mFiIEqrdCUXUIXfhT4R1xFKFYLUW6bxwCH8qPl6Aa4QogNJfub1MCEx2G4zNGbngDEKdKQy2GeXIm6QKr5XBD4U6XyGyn4a6NJaKb1e9NyrK514O3umivpSgS9TeverDbnq4JjdgfTg81H8KAYUG1mgEkJPieYjbOayTiFRDM75wQl7OdVqxQbXXZ1uDSsLLnq9W7rbHW6aAry5gNrup4VlT8iaK9YBcDj1aZLj5O49Yx5nBmw8ECVrYcLkvKTbXGTUTFQZM6DmJPGG0Va9tIyLBgfgQlSReHspKyLXJl0NOxdrQg7kK4pcnI44jtowPCHL2o1WL8UbTeQ2Xpcn1xQoy8iILIS20YYM2kOcN639u36CGADfWqvhGGd4z401R3GdLvQX6Q9uSz5vQY2dQ2fW7tNpV9fGnThhMwaS5sdMcn2GfdSCsF1HUDSar9jl9yd8RKKB9o49DWT",
+      "estimatedCost": 72
+    },
+    {
+      "id": "esc_propulsion",
+      "name": "Electronic Speed Controller",
+      "pins": [
+        "BATT_PLUS",
+        "BATT_MINUS",
+        "PHASE_A",
+        "PHASE_B",
+        "PHASE_C",
+        "PWM_SIG",
+        "PWM_GND"
+      ],
+      "type": "actuator",
+      "partId": "2b4014f5-1997-493d-9509-9fc1d2325c04",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Hobbywing+FlyFun+V5+80A+Opto+ESC&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31GCb9pj59L._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0BZX1M4LX?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$19.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0DQD224P9?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$22.5",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/33052131194.html?pdp_npi=6%40dis%21USD%2118.99%2118.99%21%21%2118.99%2118.99%21%402101611117797094545521352e100b%2112000028047670334%21affd%21%21%21%211%210%21",
+            "price": "$18.99",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B074MLVLS2?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$89.99",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "69.5x31.5x16mm",
+      "productName": "Hobbywing FlyFun V5 80A Opto ESC",
+      "purchaseUrl": "https://www.amainhobbies.com/hobbywing-flyfun-v5-80a-opto-esc-3-8s-hwa30201200/p755452",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x4g6z6QO53rvyHStoiwAE6ccRwIY5rR9Tni2Ddza1CSqBg8ZL9IfKfLLp3LlWY1PDWlw9pUcSukqz0zkYgBJ8AOlIGkOu1MHu2otkMt1CfvvE8MLCVZmk7DNCB7KbQrln6M339xgWY4JJd457xIZUQm9F7ZkTZVFhnjYY3qWss83OYnbQSCDHQaXeLbfr2qKL2iSEgaDVS6Ve543umW3NF32BxCiEvEK2FwsRnfKphlMxwXbcG1QTF3qT7kbBnLhpDhr5sGcl9QJZ0B8nHEJmes7cPFQKqkipoQJbE9H8Qosv5owBJROBUEUjAo6urfSpzhmYFInxgmITzljvRQBFGmDUvOxLMKas1qYJnNBMhyrjSIoX9YetEmTEvBZCoruxj8FuB78DaZzuWirbSCsROBBHXIxex3z8v9BEZL2llsEOj94jf8ce6TrD80Crqqsh1StlQpmsBWNYMWZe8a81BDCyCUTl1mtlx15vMBuWoj2sHbIXAKpOZnFna2W4LoFn7zbs8l4pJsi64t2O2xHwhJ2DD25dhW1zMGaF7jeI8n6uJWK3u9rjFyrFjwjSrGq6g8EVAfwi13sSd5v2SVMRa3hkVlKecDKWdC9bHUAU8LppfXTYgb88xwZMzo9B0iy37OOeJ0SV2CmQq2cGebbfv5TqVJM7wDDq4WPLW05TSDfrB666QXoX",
+      "estimatedCost": 49,
+      "amazonUrl": "https://www.amazon.com/dp/B0BZX1M4LX?tag=blueprintam-20&linkCode=osi&th=1&psc=1"
+    },
+    {
+      "id": "aileron_servo_l",
+      "name": "Left Aileron Servo",
+      "pins": [
+        "PWM",
+        "VCC_6V",
+        "GND"
+      ],
+      "type": "actuator",
+      "partId": "2eedbd27-28ac-4149-b9d6-23301a76bdc9",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=KST+DS215MG+V3.0+Digital+Servo&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31gRDAs5lZL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0FB97R23T?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$47.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/1005009833179602.html?pdp_npi=6%40dis%21USD%2135.89%2125.12%21%21%21238.95%21167.26%21%402140d36117921570708552670e102f%2112000050309996839%21affd%21%21%21%211%210%21",
+            "price": "$25.12",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "23x12x27.5mm",
+      "productName": "KST DS215MG V3.0 Digital Servo",
+      "purchaseUrl": "https://www.alofthobbies.com/products/kst-ds215mg-v3-0-micro-digital-servo",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x2lAMEl06wgNdTSMiT7cNG4HIdW0JxwtJD0qeqR0iwhPZcOJoWmzcl01T1aJnwGx7q2Rk0i7oD8YjqD5GDXdiG4YPwSrKjHnDPRyFQdJi5aIOsWt7uOkOFi1f9wFfgPMnDn8c9inPwrMEx7VueSi283jkc1417TCFtVUM6AmdYXeHlQEliL5NW7ELWUbO1dO5caigm1cGBo7QpHJDApLZA8vlC8wRkWCIkGyrzDd9Q8bYP1WUzd0KjTggnp2K8wBeo7EE7UkWwXHSewwB55TmkWQaPZYJIGhwPs80BjkWbYeiBv8oHaAr8zRsIKAFYG09kLlXa619Q2G4dFMpBIZjmULcaqcNNZfr3FRxftIjHY8Tf0V6yhs9lApP2jxYoHUMNurptkYUlRf780XeQ9Qw3a6D3hcxOes3TKXUg8wIa3WFOCeHNWStaqLjdaEucqLATEIHGFKpFtL9qgl5i4WRuGQHIA3zFBGyQKlqBSchiGg3b7AsTkpbtIeE3hAn3xSrMTWpzLK6z0EwSRl0h96H9UXyiWLLcd5sKcFxG57kmWHVfXb0ZXAQVc9aG9IpPX9A3oXdPzHGSW8LbtOa2XlUWdTnrTF8YqUIA9iqgqL08EjuhvjrPsQmfDuRyaciY5nlxypxj85wf5yJ4Q4X6MCwuxhNYxeY2CDmWaHmr9S7Vz1dbQw9WCub",
+      "estimatedCost": 29.5
+    },
+    {
+      "id": "aileron_servo_r",
+      "name": "Right Aileron Servo",
+      "pins": [
+        "PWM",
+        "VCC_6V",
+        "GND"
+      ],
+      "type": "actuator",
+      "partId": "2eedbd27-28ac-4149-b9d6-23301a76bdc9",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=KST+DS215MG+V3.0+Digital+Servo&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31gRDAs5lZL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0FB97R23T?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$47.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/1005009833179602.html?pdp_npi=6%40dis%21USD%2135.89%2125.12%21%21%21238.95%21167.26%21%402140d36117921570708552670e102f%2112000050309996839%21affd%21%21%21%211%210%21",
+            "price": "$25.12",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "23x12x27.5mm",
+      "productName": "KST DS215MG V3.0 Digital Servo",
+      "purchaseUrl": "https://www.alofthobbies.com/products/kst-ds215mg-v3-0-micro-digital-servo",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x2lAMEl06wgNdTSMiT7cNG4HIdW0JxwtJD0qeqR0iwhPZcOJoWmzcl01T1aJnwGx7q2Rk0i7oD8YjqD5GDXdiG4YPwSrKjHnDPRyFQdJi5aIOsWt7uOkOFi1f9wFfgPMnDn8c9inPwrMEx7VueSi283jkc1417TCFtVUM6AmdYXeHlQEliL5NW7ELWUbO1dO5caigm1cGBo7QpHJDApLZA8vlC8wRkWCIkGyrzDd9Q8bYP1WUzd0KjTggnp2K8wBeo7EE7UkWwXHSewwB55TmkWQaPZYJIGhwPs80BjkWbYeiBv8oHaAr8zRsIKAFYG09kLlXa619Q2G4dFMpBIZjmULcaqcNNZfr3FRxftIjHY8Tf0V6yhs9lApP2jxYoHUMNurptkYUlRf780XeQ9Qw3a6D3hcxOes3TKXUg8wIa3WFOCeHNWStaqLjdaEucqLATEIHGFKpFtL9qgl5i4WRuGQHIA3zFBGyQKlqBSchiGg3b7AsTkpbtIeE3hAn3xSrMTWpzLK6z0EwSRl0h96H9UXyiWLLcd5sKcFxG57kmWHVfXb0ZXAQVc9aG9IpPX9A3oXdPzHGSW8LbtOa2XlUWdTnrTF8YqUIA9iqgqL08EjuhvjrPsQmfDuRyaciY5nlxypxj85wf5yJ4Q4X6MCwuxhNYxeY2CDmWaHmr9S7Vz1dbQw9WCub",
+      "estimatedCost": 29.5
+    },
+    {
+      "id": "elevator_servo",
+      "name": "Elevator Servo",
+      "pins": [
+        "PWM",
+        "VCC_6V",
+        "GND"
+      ],
+      "type": "actuator",
+      "partId": "2eedbd27-28ac-4149-b9d6-23301a76bdc9",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=KST+DS215MG+V3.0+Digital+Servo&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31gRDAs5lZL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0FB97R23T?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$47.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/1005009833179602.html?pdp_npi=6%40dis%21USD%2135.89%2125.12%21%21%21238.95%21167.26%21%402140d36117921570708552670e102f%2112000050309996839%21affd%21%21%21%211%210%21",
+            "price": "$25.12",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "23x12x27.5mm",
+      "productName": "KST DS215MG V3.0 Digital Servo",
+      "purchaseUrl": "https://www.alofthobbies.com/products/kst-ds215mg-v3-0-micro-digital-servo",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x2lAMEl06wgNdTSMiT7cNG4HIdW0JxwtJD0qeqR0iwhPZcOJoWmzcl01T1aJnwGx7q2Rk0i7oD8YjqD5GDXdiG4YPwSrKjHnDPRyFQdJi5aIOsWt7uOkOFi1f9wFfgPMnDn8c9inPwrMEx7VueSi283jkc1417TCFtVUM6AmdYXeHlQEliL5NW7ELWUbO1dO5caigm1cGBo7QpHJDApLZA8vlC8wRkWCIkGyrzDd9Q8bYP1WUzd0KjTggnp2K8wBeo7EE7UkWwXHSewwB55TmkWQaPZYJIGhwPs80BjkWbYeiBv8oHaAr8zRsIKAFYG09kLlXa619Q2G4dFMpBIZjmULcaqcNNZfr3FRxftIjHY8Tf0V6yhs9lApP2jxYoHUMNurptkYUlRf780XeQ9Qw3a6D3hcxOes3TKXUg8wIa3WFOCeHNWStaqLjdaEucqLATEIHGFKpFtL9qgl5i4WRuGQHIA3zFBGyQKlqBSchiGg3b7AsTkpbtIeE3hAn3xSrMTWpzLK6z0EwSRl0h96H9UXyiWLLcd5sKcFxG57kmWHVfXb0ZXAQVc9aG9IpPX9A3oXdPzHGSW8LbtOa2XlUWdTnrTF8YqUIA9iqgqL08EjuhvjrPsQmfDuRyaciY5nlxypxj85wf5yJ4Q4X6MCwuxhNYxeY2CDmWaHmr9S7Vz1dbQw9WCub",
+      "estimatedCost": 29.5
+    },
+    {
+      "id": "rudder_servo",
+      "name": "Rudder Servo",
+      "pins": [
+        "PWM",
+        "VCC_6V",
+        "GND"
+      ],
+      "type": "actuator",
+      "partId": "2eedbd27-28ac-4149-b9d6-23301a76bdc9",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=KST+DS215MG+V3.0+Digital+Servo&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31gRDAs5lZL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0FB97R23T?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$47.99",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/item/1005009833179602.html?pdp_npi=6%40dis%21USD%2135.89%2125.12%21%21%21238.95%21167.26%21%402140d36117921570708552670e102f%2112000050309996839%21affd%21%21%21%211%210%21",
+            "price": "$25.12",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "23x12x27.5mm",
+      "productName": "KST DS215MG V3.0 Digital Servo",
+      "purchaseUrl": "https://www.alofthobbies.com/products/kst-ds215mg-v3-0-micro-digital-servo",
+      "aliexpressUrl": "https://s.click.aliexpress.com/s/fwx308cRD9Eny963e3KDdYxyIpNj8TXVr7saiF9Um5rMUg1kZtJALLnfa2LNXtiVgnxdD8Og6MmvwBoxhnSYQGM6r0c08U4TfX8DFGo7vviCuu3q62Q60OAhRZcqm3G8PtwM69xY7TOEWRrvulP5ukZQ4uQbBBtaVsdr6EffAqVmp3O5GyUANU2DoA3dJufNhDfh7KOlLgKIvRVhDxRESHLmea6fTE26gLUqKEUuuizJiLENrCbax94DZHDu8WhaXM9vQ86gzlqceNPO5w3vwXm4VrBF3x2lAMEl06wgNdTSMiT7cNG4HIdW0JxwtJD0qeqR0iwhPZcOJoWmzcl01T1aJnwGx7q2Rk0i7oD8YjqD5GDXdiG4YPwSrKjHnDPRyFQdJi5aIOsWt7uOkOFi1f9wFfgPMnDn8c9inPwrMEx7VueSi283jkc1417TCFtVUM6AmdYXeHlQEliL5NW7ELWUbO1dO5caigm1cGBo7QpHJDApLZA8vlC8wRkWCIkGyrzDd9Q8bYP1WUzd0KjTggnp2K8wBeo7EE7UkWwXHSewwB55TmkWQaPZYJIGhwPs80BjkWbYeiBv8oHaAr8zRsIKAFYG09kLlXa619Q2G4dFMpBIZjmULcaqcNNZfr3FRxftIjHY8Tf0V6yhs9lApP2jxYoHUMNurptkYUlRf780XeQ9Qw3a6D3hcxOes3TKXUg8wIa3WFOCeHNWStaqLjdaEucqLATEIHGFKpFtL9qgl5i4WRuGQHIA3zFBGyQKlqBSchiGg3b7AsTkpbtIeE3hAn3xSrMTWpzLK6z0EwSRl0h96H9UXyiWLLcd5sKcFxG57kmWHVfXb0ZXAQVc9aG9IpPX9A3oXdPzHGSW8LbtOa2XlUWdTnrTF8YqUIA9iqgqL08EjuhvjrPsQmfDuRyaciY5nlxypxj85wf5yJ4Q4X6MCwuxhNYxeY2CDmWaHmr9S7Vz1dbQw9WCub",
+      "estimatedCost": 29.5
+    },
+    {
+      "id": "li_ion_battery_pack",
+      "name": "Main Li-ion Pack (6S4P)",
+      "pins": [
+        "BATT+",
+        "BATT-",
+        "BAL1",
+        "BAL2",
+        "BAL3",
+        "BAL4",
+        "BAL5",
+        "BAL6"
+      ],
+      "type": "power",
+      "partId": "c446abb4-5dbb-404d-b357-adbc824b3052",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Molicel+INR21700-P45B+Custom+Pack&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://imgs.search.brave.com/9F5QytXkoDBdCHv01uMCciQDMo7UK5HC0TkGHxd0uBo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5tYWRlLWluLWNo/aW5hLmNvbS8yMDJm/MGowMGVzV29PVkFV/d3liei9MYXJnZS1T/dG9jay1Nb2xpY2Vs/LUlucjIxNzAwLVA0/NWItUDQyQS1CYXR0/ZXJ5LUNlbGxzLWZv/ci1CYXR0ZXJ5LVBh/Y2stNnMycC02czNw/LUZwdi1Ecm9uZS1C/YXR0ZXJ5LndlYnA",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-molicel-inr21700-p45b-6s3p-pack.html",
+            "vendor": "AliExpress"
+          }
+        ]
+      },
+      "dimensions": "170x86x74mm",
+      "productName": "Molicel INR21700-P45B Custom Pack",
+      "purchaseUrl": "https://www.18650batterystore.com/products/molicel-p45b",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3znLNTN",
+      "estimatedCost": 210
+    },
+    {
+      "id": "camera_sony_ilx_lr1",
+      "name": "Aerial Mapping Camera",
+      "pins": [
+        "DC_IN_10-18V",
+        "DC_GND",
+        "POWER_CONTROL_MULTI",
+        "USB_C"
+      ],
+      "type": "sensor",
+      "partId": "ef0008d9-26e9-404e-bc69-415a383dd472",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Sony+ILX-LR1&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/410hafPevCL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-sony-ilx-lr1.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0CX9GTCJP?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$3298",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0H1PS3K4B?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$19.99",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "100x74x42.5mm",
+      "description": "Full-frame mirrorless camera for high-resolution aerial mapping and inspection.",
+      "productName": "Sony ILX-LR1",
+      "purchaseUrl": "https://www.sony.com/electronics/interchangeable-lens-cameras/ilx-lr1",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3oAiDJX",
+      "estimatedCost": 2950
+    },
+    {
+      "id": "camera_power_regulator",
+      "name": "Camera DC-DC Regulator (12V)",
+      "pins": [
+        "VIN+",
+        "VIN-",
+        "VOUT+",
+        "VOUT-"
+      ],
+      "type": "power",
+      "partId": "60af7b9f-2aaf-47a3-bae8-ef4740df3aef",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Mateksys+Buck-Boost+Regulator+12V+4A&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/41I+lKTdx+L._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0DQPG19PY?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$17.2",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-matek-12v-4a-step-down-voltage-regulator.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0DQPC6QKW?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$29.5",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "36x24x10mm",
+      "productName": "Mateksys Buck-Boost Regulator 12V 4A",
+      "purchaseUrl": "https://www.getfpv.com/mateksys-buck-boost-converter-6-30v-to-5v-12v.html",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c41RYB4f",
+      "estimatedCost": 15
+    },
+    {
+      "id": "bec_servo_power",
+      "name": "Servo Battery Eliminator Circuit",
+      "pins": [
+        "VIN+",
+        "VIN-",
+        "VOUT+",
+        "VOUT-"
+      ],
+      "type": "power",
+      "partId": "c953d24b-cd3d-493e-8124-eb9ec6ca5e69",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Castle+Creations+CC+BEC+10A&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/3141zNE7ruL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-castle-creations-cc-bec-10a.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B000MXAR12?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$26.95",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "30x15x10mm",
+      "description": "Provides regulated 5V power for the flight controller and GPS module.",
+      "productName": "Castle Creations CC BEC 10A",
+      "purchaseUrl": "https://www.amainhobbies.com/castle-creations-cc-bec-10a-voltage-regulator-cse010-0004-00/p3138",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3dZzl7P",
+      "estimatedCost": 26
+    },
+    {
+      "id": "power_monitor_hall",
+      "name": "Main Power Monitor",
+      "pins": [
+        "BATT+",
+        "LOAD+",
+        "OUT_V",
+        "OUT_I",
+        "5V",
+        "GND"
+      ],
+      "type": "power",
+      "partId": "2f346a3c-56c9-4819-8228-db76f784388f",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Mauchs+200A+Hall+Sensor+PM&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "electrical",
+      "imageUrl": "https://m.media-amazon.com/images/I/31lRciojdAL._SL500_.jpg",
+      "quantity": 1,
+      "research": {
+        "sourcing": [
+          {
+            "url": "https://www.amazon.com/dp/B0HFMWRNSC?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$141.44",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0H215KV7X?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$116.66",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.aliexpress.com/w/wholesale-mauchs-200a-hall-sensor-pdb.html",
+            "vendor": "AliExpress"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0H35W9MBC?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$9.5",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0D9NG52R6?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$9.19",
+            "vendor": "Amazon"
+          },
+          {
+            "url": "https://www.amazon.com/dp/B0HGFW6TNL?tag=blueprintam-20&linkCode=osi&th=1&psc=1",
+            "price": "$48.99",
+            "vendor": "Amazon"
+          }
+        ]
+      },
+      "dimensions": "50x30x12mm",
+      "productName": "Mauchs 200A Hall Sensor PM",
+      "purchaseUrl": "https://www.mauch-electronic.com/apps/webstore/products/show/7112398",
+      "aliexpressUrl": "https://s.click.aliexpress.com/e/_c3P9pQMz",
+      "estimatedCost": 42,
+      "amazonUrl": "https://www.amazon.com/dp/B0HFMWRNSC?tag=blueprintam-20&linkCode=osi&th=1&psc=1"
+    },
+    {
+      "id": "fuselage_nose_3d",
+      "name": "Nez Fuselage 3D",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "dimensions": "180x140x120mm",
+      "description": "Section avant du fuselage du Moose abritant le moteur, le capteur de vitesse d'air et le capteur GNSS.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 12.5,
+      "printSettings": "2 voiles, 15% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "fuselage_center_3d",
+      "name": "Section Centrale Fuselage 3D",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "dimensions": "280x150x130mm",
+      "description": "Section centrale structurelle accueillant la batterie Li-ion principale, l'autopilote et la caméra Sony.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 22,
+      "printSettings": "3 voiles, 20% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "fuselage_tail_3d",
+      "name": "Section Queue Fuselage 3D",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "dimensions": "250x120x100mm",
+      "description": "Section arrière du fuselage supportant les empennages et les servos de profondeur et de direction.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 15,
+      "printSettings": "2 voiles, 15% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_section_l1_3d",
+      "name": "Aile Gauche Section Interne",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "300x220x45mm",
+      "description": "Section d'aile gauche interne avec nervures de renfort pour le passage de la clé d'aile en carbone.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 9.5,
+      "printSettings": "1 voile, 3% infill gyroïde, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_section_r1_3d",
+      "name": "Aile Droite Section Interne",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "300x220x45mm",
+      "description": "Section d'aile droite interne avec nervures de renfort pour le passage de la clé d'aile en carbone.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 9.5,
+      "printSettings": "1 voile, 3% infill gyroïde, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_section_l2_3d",
+      "name": "Aile Gauche Section Externe",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "300x200x40mm",
+      "description": "Section d'aile gauche externe logeant le servo d'aileron gauche.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 8.5,
+      "printSettings": "1 voile, 3% infill gyroïde, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_section_r2_3d",
+      "name": "Aile Droite Section Externe",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "300x200x40mm",
+      "description": "Section d'aile droite externe logeant le servo d'aileron droit.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 8.5,
+      "printSettings": "1 voile, 3% infill gyroïde, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_tip_l_3d",
+      "name": "Saumon d'Aile Gauche",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "200x180x30mm",
+      "description": "Extrémité d'aile gauche profilée aérodynamiquement.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 5,
+      "printSettings": "1 voile, 3% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "wing_tip_r_3d",
+      "name": "Saumon d'Aile Droite",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "200x180x30mm",
+      "description": "Extrémité d'aile droite profilée aérodynamiquement.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 5,
+      "printSettings": "1 voile, 3% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "tail_stabilizer_h_3d",
+      "name": "Empennage Horizontal",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "450x120x15mm",
+      "description": "Stabilisateur horizontal arrière imprimé en LW-PLA pour minimiser le poids de queue.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 11,
+      "printSettings": "1 voile, 3% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "tail_stabilizer_v_3d",
+      "name": "Empennage Vertival",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PLA",
+      "quantity": 1,
+      "dimensions": "220x150x15mm",
+      "description": "Dérive verticale arrière imprimée en LW-PLA assurant la stabilité en lacet.",
+      "purchaseUrl": "https://www.amazon.com/s?k=pla+filament+lightweight",
+      "estimatedCost": 7,
+      "printSettings": "1 voile, 3% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "carbon_spar_main",
+      "name": "Clé d'Aile Principale",
+      "type": "structural",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Tube+Carbone+Rond+3K+Brillante+10mm&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Fibre de carbone",
+      "quantity": 1,
+      "dimensions": "1000x10x8mm",
+      "description": "Tube en fibre de carbone traversant le fuselage pour rigidifier les deux ailes.",
+      "productName": "Tube Carbone Rond 3K Brillante 10mm",
+      "purchaseUrl": "https://www.amazon.com/s?k=carbon+fiber+tube+10mm+1000mm",
+      "estimatedCost": 15.4
+    },
+    {
+      "id": "carbon_spar_tail",
+      "name": "Tube de Queue Carbone",
+      "type": "structural",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Tube+Carbone+Rond+3K+Brillante+8mm&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Fibre de carbone",
+      "quantity": 1,
+      "dimensions": "600x8x6mm",
+      "description": "Tube en fibre de carbone rigidifiant la liaison entre le fuselage central et l'empennage horizontal.",
+      "productName": "Tube Carbone Rond 3K Brillante 8mm",
+      "purchaseUrl": "https://www.amazon.com/s?k=carbon+fiber+tube+8mm",
+      "estimatedCost": 9.5
+    },
+    {
+      "id": "camera_gimbal_mount_3d",
+      "name": "Support Caméra Fixe Sony",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "camera_sony_ilx_lr1",
+      "dimensions": "110x85x50mm",
+      "description": "Support d'intégration sur mesure avec amortisseurs de vibrations pour la caméra Sony ILX-LR1.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 4.8,
+      "printSettings": "3 voiles, 30% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "vibration_damping_balls",
+      "name": "Boules Amortissantes",
+      "type": "misc",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Boules+en+Silicone+pour+Nacelle+Drone+100g&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Silicone",
+      "quantity": 4,
+      "dimensions": "15x15x15mm",
+      "description": "Amortisseurs en silicone souple insérés entre le fuselage et le support caméra pour éliminer l'effet 'jello'.",
+      "productName": "Boules en Silicone pour Nacelle Drone 100g",
+      "purchaseUrl": "https://www.amazon.com/s?k=gimbal+silicone+damping+balls",
+      "estimatedCost": 1.2
+    },
+    {
+      "id": "battery_tray_3d",
+      "name": "Bac de Batterie Amovible",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "li_ion_battery_pack",
+      "dimensions": "220x85x25mm",
+      "description": "Support ajustable imprimé en 3D permettant de centrer le pack batterie 6S4P pour régler le CG.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 6.2,
+      "printSettings": "3 voiles, 25% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "battery_strap",
+      "name": "Sangles de Batterie Antidérapantes",
+      "type": "misc",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Sangles+Velcro+RJXHOBBY+avec+Silicone+300mm&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Nylon",
+      "quantity": 2,
+      "dimensions": "300x20x2mm",
+      "description": "Sangles à boucle et silicone antidérapant pour maintenir le pack de batterie fermement dans son berceau.",
+      "productName": "Sangles Velcro RJXHOBBY avec Silicone 300mm",
+      "purchaseUrl": "https://www.amazon.com/s?k=lipo+battery+strap+300mm",
+      "estimatedCost": 2.5
+    },
+    {
+      "id": "motor_mount_3d",
+      "name": "Bâti Moteur Renforcé",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "moter_propulsion",
+      "dimensions": "55x55x30mm",
+      "description": "Support frontal moteur adapté pour se visser sur le nez et dissiper la chaleur du moteur Brushless.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 3.5,
+      "printSettings": "4 voiles, 40% infill gyroïde, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "control_horns_3d",
+      "name": "Guignols de Commande Surfaces Mobiles",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 4,
+      "dimensions": "25x15x20mm",
+      "description": "Guignols de contrôle à visser sur les ailerons, la dérive et la profondeur pour la liaison mécanique avec les servos.",
+      "purchaseUrl": "https://www.amazon.com/s?k=control+horns+rc+plane",
+      "estimatedCost": 0.8,
+      "printSettings": "4 voiles, 100% infill, 0.15mm hauteur de couche"
+    },
+    {
+      "id": "pushrods_linkages",
+      "name": "Tringlerie de Commande M2",
+      "type": "mechanism",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Tige+Filet%C3%A9e+en+Acier+M2+avec+Chapes&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Acier",
+      "quantity": 4,
+      "dimensions": "150x2x2mm",
+      "description": "Tiges filetées rigides M2 équipées de chapes métalliques pour connecter les palonniers de servo aux guignols.",
+      "productName": "Tige Filetée en Acier M2 avec Chapes",
+      "purchaseUrl": "https://www.amazon.com/s?k=m2+pushrod+clevis+rc",
+      "estimatedCost": 1.75
+    },
+    {
+      "id": "screws_m3_kit",
+      "name": "Kit Visserie M3 Assemblage",
+      "type": "misc",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Vis+%C3%A0+T%C3%AAte+Cylindrique+Six+Pans+Creux+M3+en+Acier+Alli%C3%A9&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Acier allié",
+      "quantity": 50,
+      "dimensions": "M3x12mm",
+      "description": "Lot de vis M3 de longueurs variées (8mm à 25mm) pour l'assemblage des sections de fuselage et des supports.",
+      "productName": "Vis à Tête Cylindrique Six Pans Creux M3 en Acier Allié",
+      "purchaseUrl": "https://www.amazon.com/s?k=m3+hex+screws+assortment",
+      "estimatedCost": 0.08
+    },
+    {
+      "id": "brass_inserts_m3",
+      "name": "Inserts Filetés en Laiton M3",
+      "type": "misc",
+      "ebayUrl": "https://www.ebay.com/sch/i.html?_nkw=Inserts+Thermiques+molet%C3%A9s+en+Laiton+M3+x+5.7mm&_sacat=0&_from=R40&mkcid=1&mkrid=711-53200-19255-0&siteid=0&campid=5339153059&customid=blueprint&toolid=10001&mkevt=1",
+      "category": "mechanical",
+      "material": "Laiton",
+      "quantity": 30,
+      "dimensions": "M3x5.7mm",
+      "description": "Inserts filetés insérés à chaud au fer à souder dans les pièces 3D pour des liaisons vissées durables.",
+      "productName": "Inserts Thermiques moletés en Laiton M3 x 5.7mm",
+      "purchaseUrl": "https://www.amazon.com/s?k=m3+brass+heat+set+inserts",
+      "estimatedCost": 0.15
+    },
+    {
+      "id": "rfd900_antenna_mount_3d",
+      "name": "Support Antenne RFD900",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "rfd900_telemetry",
+      "dimensions": "120x35x40mm",
+      "description": "Support déporté profilé aérodynamiquement permettant de monter les antennes dipôles de télémétrie en polarisation verticale.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 2.2,
+      "printSettings": "2 voiles, 15% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "pitot_tube_mount_3d",
+      "name": "Support Tube Pitot",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "airspeed_sensor_ms5525",
+      "dimensions": "45x25x20mm",
+      "description": "Pince de fixation profilée pour aligner parfaitement le tube Pitot métallique dans l'axe de vol.",
+      "purchaseUrl": "https://www.amazon.com/s?k=petg+filament+1.75mm",
+      "estimatedCost": 1.5,
+      "printSettings": "3 voiles, 20% infill, 0.2mm hauteur de couche"
+    },
+    {
+      "id": "autopilot_cube_orange_mount",
+      "name": "Flight Controller Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "autopilot_cube_orange",
+      "dimensions": "60x40x12mm",
+      "description": "Standoff bracket sized to the Flight Controller's mounting hole pattern. M2.5 holes for board fasteners; vented underside for airflow.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "gnss_rtk_here4_mount",
+      "name": "GNSS RTK Module Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "gnss_rtk_here4",
+      "dimensions": "30x30x15mm",
+      "description": "Form-fitting cradle for the GNSS RTK Module that holds the sensing surface in its rated orientation. Snap-fit retention so it can be removed for calibration without tools.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "backup_4g_dongle_mount",
+      "name": "Secondary LTE Backup Link Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "backup_4g_dongle",
+      "dimensions": "50x40x12mm",
+      "description": "Adapter plate for the Secondary LTE Backup Link that bolts to the main chassis with M3 hardware. Includes wire-routing channels.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "esc_propulsion_mount",
+      "name": "Electronic Speed Controller Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "esc_propulsion",
+      "dimensions": "50x50x20mm",
+      "description": "Per-position bracket for the Electronic Speed Controller with M3 mounting holes matched to its bolt pattern. Rated for the actuator's continuous torque/load class.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "aileron_servo_l_mount",
+      "name": "Left Aileron Servo Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "aileron_servo_l",
+      "dimensions": "50x50x20mm",
+      "description": "Per-position bracket for the Left Aileron Servo with M3 mounting holes matched to its bolt pattern. Rated for the actuator's continuous torque/load class.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "aileron_servo_r_mount",
+      "name": "Right Aileron Servo Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "aileron_servo_r",
+      "dimensions": "50x50x20mm",
+      "description": "Per-position bracket for the Right Aileron Servo with M3 mounting holes matched to its bolt pattern. Rated for the actuator's continuous torque/load class.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "elevator_servo_mount",
+      "name": "Elevator Servo Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "elevator_servo",
+      "dimensions": "50x50x20mm",
+      "description": "Per-position bracket for the Elevator Servo with M3 mounting holes matched to its bolt pattern. Rated for the actuator's continuous torque/load class.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    },
+    {
+      "id": "rudder_servo_mount",
+      "name": "Rudder Servo Mount",
+      "type": "3d_printed",
+      "category": "mechanical",
+      "material": "PETG",
+      "quantity": 1,
+      "mountsFor": "rudder_servo",
+      "dimensions": "50x50x20mm",
+      "description": "Per-position bracket for the Rudder Servo with M3 mounting holes matched to its bolt pattern. Rated for the actuator's continuous torque/load class.",
+      "purchaseUrl": "",
+      "estimatedCost": 2,
+      "printSettings": "30% infill, 0.2mm layer, 4 perimeters"
+    }
+  ],
+  "notes": [
+    "voilure fixe",
+    "impression 3D",
+    "tubes carbone",
+    "liaison 20 km",
+    "compatible ArduPilot",
+    "caméra Sony intégrée"
+  ],
+  "projectName": "Fixed-Wing Mapping Drone",
+  "originalPrompt": "Conçois un prototype de drone à voilure fixe électrique destiné à la cartographie aérienne. Objectif : démontrer que notre équipe sait concevoir, construire et faire voler un drone longue portée. C'est un exemplaire unique, pas un produit. Rédige toute la documentation en français.\n\nRÈGLES DE DOCUMENTATION\n- Détaille chaque choix et justifie-le. Pour chaque décision, indique les options écartées et pourquoi.\n- Montre toutes les formules, les valeurs d'entrée, les unités et les résultats. Aucun chiffre sans son origine.\n- Distingue clairement : donnée constructeur (avec référence), calcul, estimation, hypothèse.\n- N'invente aucune référence de pièce, aucun prix, aucune caractéristique. Si une donnée est incertaine, signale-la.\n- Pose-moi des questions avant de supposer une information manquante, et liste toutes tes hypothèses.\n- Si deux exigences sont en conflit, signale le conflit au lieu de le résoudre en silence.\n\nMISSION\n- Aller-retour : 20 km aller, 20 km retour, soit 40 km au total, plus le temps de cartographie sur zone (à me demander), avec 30 % d'énergie en réserve à l'atterrissage.\n- Altitude maximale : 1000 m au-dessus du sol.\n- Altitude du site de décollage : 960 m au-dessus du niveau de la mer, donc jusqu'à environ 2000 m. Utilise la densité de l'air réduite aux deux altitudes et montre l'effet d'une journée chaude (altitude densité).\n- Vol autonome par points de passage, avec retour automatique au point de départ en cas de perte de liaison.\n- Liaison de commande et de télémétrie continue sur 20 km, avec marge. Compare les options et justifie le choix.\n\nCHARGE UTILE\n- Caméra Sony ILX-LR1 : 243 g boîtier seul, 100 x 74 x 42,5 mm, alimentation 10 à 18 V CC, déclenchement par le connecteur Power and Control.\n- Charge utile totale de 500 g (boîtier, objectif, support, câblage). Propose un objectif adapté à la cartographie et justifie-le.\n- Prévois l'alimentation de la caméra depuis la batterie principale, le déclenchement par l'autopilote et le géomarquage des images.\n- Calcule la résolution au sol (GSD) aux altitudes de vol envisagées.\n\nCELLULE\n- Pars de plateformes simples imprimées en 3D, par exemple le Moose de Flightory (envergure 1600 mm, masse en vol 2 à 4,5 kg). Ce n'est pas une obligation : si une autre cellule convient mieux, propose-la et justifie.\n- Compare au moins trois cellules sur : rendement en croisière, capacité d'emport, logement de la caméra et de la batterie, stabilité pour la photo, lancement et atterrissage, facilité de fabrication et de réparation.\n- La masse au décollage n'est pas fixée : c'est un résultat de ta conception. Indique la masse obtenue et comment elle évolue si la charge utile ou la batterie augmente.\n\nCONTRAINTES\n- Propulsion électrique. Compatible ArduPilot Plane, avec GNSS (avec rtk dans l’avenir), baromètre, capteur de vitesse air et radio de télémétrie.\n- Fabrication simple : impression 3D, tubes carbone, mousse. Pas d'outillage industriel.\n\nLIVRABLES\n1. Comparaison des cellules et recommandation justifiée.\n2. Note de calcul : bilan de masse par sous-système, surface alaire, charge alaire, allongement, profil, vitesse de décrochage à 960 m et 1960 m, finesse estimée, puissance en croisière et en montée, taux de montée à l'altitude maximale, rapport poussée/poids au décollage.\n3. Bilan énergétique : montée, 40 km de croisière, cartographie, descente, réserve. Capacité en Wh, chimie (LiPo ou Li-ion), configuration des cellules, masse.\n4. Choix des moteurs, hélices et contrôleurs (ESC), avec kV, dimensions, courant maximal et au moins 25 % de marge.\n5. Schéma de câblage et bilan électrique : tensions, régulateurs, section des fils, connecteurs, alimentation de la caméra.\n6. Centre de gravité en % de la corde aérodynamique moyenne, placement des composants, marge statique.\n7. Nomenclature avec caractéristiques, prix et liens d'achat.\n8. Étapes d'assemblage.\n9. Plan d'essais progressif : poussée statique, centrage, vol plané, vol court sans caméra, vol avec masse factice, puis extension progressive de la portée.\n10. Les cinq principaux risques et comment tester chacun.\n11. Les trois décisions que je dois prendre avant de construire.\n\n12. A part toute mes exigeances, donne aussi tout ce que la plateforme donne.",
+  "instructionSteps": [
+    {
+      "id": "fabricate",
+      "subSteps": [
+        {
+          "id": "fabricate_1",
+          "title": "3D print fuselage segments and wing sections",
+          "partIds": [
+            "fuselage_nose_3d",
+            "fuselage_center_3d",
+            "fuselage_tail_3d",
+            "wing_section_l1_3d",
+            "wing_section_r1_3d",
+            "wing_section_l2_3d",
+            "wing_section_r2_3d",
+            "wing_tip_l_3d",
+            "wing_tip_r_3d",
+            "tail_stabilizer_h_3d",
+            "tail_stabilizer_v_3d"
+          ]
+        },
+        {
+          "id": "fabricate_2",
+          "title": "Print functional mounting brackets and structural supports",
+          "partIds": [
+            "camera_gimbal_mount_3d",
+            "battery_tray_3d",
+            "motor_mount_3d",
+            "control_horns_3d",
+            "rfd900_antenna_mount_3d",
+            "pitot_tube_mount_3d",
+            "autopilot_cube_orange_mount",
+            "gnss_rtk_here4_mount",
+            "backup_4g_dongle_mount",
+            "esc_propulsion_mount",
+            "aileron_servo_l_mount",
+            "aileron_servo_r_mount",
+            "elevator_servo_mount",
+            "rudder_servo_mount"
+          ]
+        },
+        {
+          "id": "fabricate_3",
+          "title": "Install brass inserts into center fuselage and structural mounts",
+          "partIds": [
+            "fuselage_center_3d",
+            "brass_inserts_m3",
+            "screws_m3_kit"
+          ]
+        },
+        {
+          "id": "fabricate_4",
+          "title": "Pre-fit carbon spars and drill clamping holes",
+          "partIds": [
+            "carbon_spar_main",
+            "carbon_spar_tail",
+            "fuselage_center_3d",
+            "fuselage_tail_3d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wire",
+      "subSteps": [
+        {
+          "id": "wire_1",
+          "title": "Solder power distribution lines and Hall sensor power monitor",
+          "partIds": [
+            "li_ion_battery_pack",
+            "power_monitor_hall",
+            "esc_propulsion",
+            "camera_power_regulator",
+            "bec_servo_power"
+          ]
+        },
+        {
+          "id": "wire_2",
+          "title": "Wire power and control interfaces for autopilot autopilot_cube_orange",
+          "partIds": [
+            "autopilot_cube_orange",
+            "power_monitor_hall",
+            "gnss_rtk_here4",
+            "airspeed_sensor_ms5525"
+          ]
+        },
+        {
+          "id": "wire_3",
+          "title": "Wire actuators, telemetry links, and backup LTE systems",
+          "partIds": [
+            "autopilot_cube_orange",
+            "rfd900_telemetry",
+            "backup_4g_dongle",
+            "esc_propulsion"
+          ]
+        },
+        {
+          "id": "wire_4",
+          "title": "Solder camera regulator output and establish PWM servo connections",
+          "partIds": [
+            "camera_power_regulator",
+            "camera_sony_ilx_lr1",
+            "bec_servo_power",
+            "aileron_servo_l",
+            "aileron_servo_r",
+            "elevator_servo",
+            "rudder_servo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bringup",
+      "subSteps": [
+        {
+          "id": "bringup_1",
+          "title": "Connect autopilot and flash ArduPilot firmware via Mission Planner",
+          "partIds": [
+            "autopilot_cube_orange"
+          ]
+        },
+        {
+          "id": "bringup_2",
+          "title": "Configure and calibrate airspeed sensor and GNSS RTK module",
+          "partIds": [
+            "autopilot_cube_orange",
+            "airspeed_sensor_ms5525",
+            "gnss_rtk_here4"
+          ]
+        },
+        {
+          "id": "bringup_3",
+          "title": "Establish RFD900 and LTE backup communication link integration",
+          "partIds": [
+            "autopilot_cube_orange",
+            "rfd900_telemetry",
+            "backup_4g_dongle"
+          ]
+        },
+        {
+          "id": "bringup_4",
+          "title": "Calibrate ESC endpoints, test motor spins, and verify servo directions",
+          "partIds": [
+            "esc_propulsion",
+            "moter_propulsion",
+            "aileron_servo_l",
+            "aileron_servo_r",
+            "elevator_servo",
+            "rudder_servo"
+          ]
+        },
+        {
+          "id": "bringup_5",
+          "title": "Trigger camera integration and verify remote shutter operation",
+          "partIds": [
+            "autopilot_cube_orange",
+            "camera_sony_ilx_lr1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "assemble",
+      "subSteps": [
+        {
+          "id": "assemble_1",
+          "title": "Glue wing sections together and slide onto carbon_spar_main",
+          "partIds": [
+            "wing_section_l1_3d",
+            "wing_section_r1_3d",
+            "wing_section_l2_3d",
+            "wing_section_r2_3d",
+            "wing_tip_l_3d",
+            "wing_tip_r_3d",
+            "carbon_spar_main"
+          ]
+        },
+        {
+          "id": "assemble_2",
+          "title": "Mount motor and servos, then construct linkages and control horns",
+          "partIds": [
+            "moter_propulsion",
+            "motor_mount_3d",
+            "aileron_servo_l",
+            "aileron_servo_r",
+            "elevator_servo",
+            "rudder_servo",
+            "control_horns_3d",
+            "pushrods_linkages"
+          ]
+        },
+        {
+          "id": "assemble_3",
+          "title": "Assemble main fuselage and attach tail boom structure",
+          "partIds": [
+            "fuselage_center_3d",
+            "fuselage_nose_3d",
+            "fuselage_tail_3d",
+            "carbon_spar_tail",
+            "tail_stabilizer_h_3d",
+            "tail_stabilizer_v_3d"
+          ]
+        },
+        {
+          "id": "assemble_4",
+          "title": "Install electronics bay brackets, vibration dampers, and mapping camera",
+          "partIds": [
+            "autopilot_cube_orange_mount",
+            "autopilot_cube_orange",
+            "vibration_damping_balls",
+            "camera_gimbal_mount_3d",
+            "camera_sony_ilx_lr1"
+          ]
+        },
+        {
+          "id": "assemble_5",
+          "title": "Secure battery tray, insert battery pack, and perform final CG balance check",
+          "partIds": [
+            "battery_tray_3d",
+            "battery_strap",
+            "li_ion_battery_pack"
+          ]
+        }
+      ]
+    }
+  ],
+  "projectDescription": "{\n  \"description\": \"Ce drone à voilure fixe imprimé en 3D intègre un autopilote ArduPilot, un GNSS RTK, une liaison hybride RFD900/LTE pour 20 km de portée, et une caméra Sony ILX-LR1 alimentée en 12V pour des missions de cartographie autonome longue distance.\"\n}",
+  "instructionPreamble": {
+    "tools": [
+      "3D printer capable of printing PLA and PETG",
+      "Soldering iron and solder",
+      "Heat-set insert iron or soldering iron tip for M3 inserts",
+      "M3 and M2 hex keys",
+      "Wire strippers and crimping tool",
+      "Multimeter",
+      "CA Glue (Cyanoacrylate)",
+      "Double-sided tape and zip ties"
+    ],
+    "assumptions": [
+      "Basic soldering and wiring safety skills",
+      "Familiarity with ArduPilot firmware installation and Mission Planner",
+      "Calibrated 3D printer for accurate PETG/PLA dimensional tolerances",
+      "Access to a safe, open environment for GPS calibration and motor testing"
+    ]
+  },
+  "electricalConnections": [
+    {
+      "type": "power",
+      "label": "Main Battery Output",
+      "source": "li_ion_battery_pack",
+      "target": "power_monitor_hall",
+      "current": "45A",
+      "voltage": "22.2V"
+    },
+    {
+      "type": "power",
+      "label": "Battery Power to ESC",
+      "source": "power_monitor_hall",
+      "target": "esc_propulsion",
+      "current": "40A",
+      "voltage": "22.2V"
+    },
+    {
+      "type": "power",
+      "label": "Battery Power to Camera Regulator",
+      "source": "power_monitor_hall",
+      "target": "camera_power_regulator",
+      "current": "2A",
+      "voltage": "22.2V"
+    },
+    {
+      "type": "power",
+      "label": "Battery Power to Servo BEC",
+      "source": "power_monitor_hall",
+      "target": "bec_servo_power",
+      "current": "5A",
+      "voltage": "22.2V"
+    },
+    {
+      "type": "data",
+      "label": "Voltage Monitoring",
+      "source": "power_monitor_hall",
+      "target": "autopilot_cube_orange",
+      "protocol": "analog",
+      "sourcePin": "OUT_V",
+      "targetPin": "POWER1"
+    },
+    {
+      "type": "data",
+      "label": "Current Monitoring",
+      "source": "power_monitor_hall",
+      "target": "autopilot_cube_orange",
+      "protocol": "analog",
+      "sourcePin": "OUT_I",
+      "targetPin": "POWER1"
+    },
+    {
+      "type": "power",
+      "label": "FC Power Supply",
+      "source": "power_monitor_hall",
+      "target": "autopilot_cube_orange",
+      "current": "1A",
+      "voltage": "5.3V"
+    },
+    {
+      "type": "power",
+      "label": "Regulated 12V Camera Power",
+      "source": "camera_power_regulator",
+      "target": "camera_sony_ilx_lr1",
+      "current": "1.5A",
+      "voltage": "12V"
+    },
+    {
+      "type": "power",
+      "label": "Left Aileron Servo Power",
+      "source": "bec_servo_power",
+      "target": "aileron_servo_l",
+      "current": "1.2A",
+      "voltage": "6V"
+    },
+    {
+      "type": "power",
+      "label": "Right Aileron Servo Power",
+      "source": "bec_servo_power",
+      "target": "aileron_servo_r",
+      "current": "1.2A",
+      "voltage": "6V"
+    },
+    {
+      "type": "power",
+      "label": "Elevator Servo Power",
+      "source": "bec_servo_power",
+      "target": "elevator_servo",
+      "current": "1.2A",
+      "voltage": "6V"
+    },
+    {
+      "type": "power",
+      "label": "Rudder Servo Power",
+      "source": "bec_servo_power",
+      "target": "rudder_servo",
+      "current": "1.2A",
+      "voltage": "6V"
+    },
+    {
+      "type": "data",
+      "label": "GNSS RTK CAN Connection",
+      "source": "autopilot_cube_orange",
+      "target": "gnss_rtk_here4",
+      "protocol": "can",
+      "sourcePin": "CAN1",
+      "targetPin": "CAN"
+    },
+    {
+      "type": "power",
+      "label": "GNSS Power",
+      "source": "autopilot_cube_orange",
+      "target": "gnss_rtk_here4",
+      "current": "500mA",
+      "voltage": "5V"
+    },
+    {
+      "type": "data",
+      "label": "Airspeed I2C Data",
+      "source": "autopilot_cube_orange",
+      "target": "airspeed_sensor_ms5525",
+      "protocol": "i2c",
+      "sourcePin": "I2C",
+      "targetPin": "SDA"
+    },
+    {
+      "type": "power",
+      "label": "Airspeed Power",
+      "source": "autopilot_cube_orange",
+      "target": "airspeed_sensor_ms5525",
+      "current": "100mA",
+      "voltage": "5V"
+    },
+    {
+      "type": "data",
+      "label": "Primary Telemetry UART",
+      "source": "autopilot_cube_orange",
+      "target": "rfd900_telemetry",
+      "protocol": "uart",
+      "sourcePin": "USART1",
+      "targetPin": "RX"
+    },
+    {
+      "type": "power",
+      "label": "RFD900 Power",
+      "source": "autopilot_cube_orange",
+      "target": "rfd900_telemetry",
+      "current": "1A",
+      "voltage": "5V"
+    },
+    {
+      "type": "data",
+      "label": "Secondary LTE Link",
+      "source": "autopilot_cube_orange",
+      "target": "backup_4g_dongle",
+      "protocol": "usb",
+      "sourcePin": "USB",
+      "targetPin": "USB_D-"
+    },
+    {
+      "type": "power",
+      "label": "LTE Dongle Power",
+      "source": "autopilot_cube_orange",
+      "target": "backup_4g_dongle",
+      "current": "500mA",
+      "voltage": "5V"
+    },
+    {
+      "type": "data",
+      "label": "Propulsion Throttle Command",
+      "source": "autopilot_cube_orange",
+      "target": "esc_propulsion",
+      "protocol": "pwm",
+      "sourcePin": "MAIN1",
+      "targetPin": "PWM_SIG"
+    },
+    {
+      "type": "data",
+      "label": "Left Aileron Servo Control",
+      "source": "autopilot_cube_orange",
+      "target": "aileron_servo_l",
+      "protocol": "pwm",
+      "sourcePin": "MAIN2",
+      "targetPin": "PWM"
+    },
+    {
+      "type": "data",
+      "label": "Right Aileron Servo Control",
+      "source": "autopilot_cube_orange",
+      "target": "aileron_servo_r",
+      "protocol": "pwm",
+      "sourcePin": "MAIN3",
+      "targetPin": "PWM"
+    },
+    {
+      "type": "data",
+      "label": "Elevator Servo Control",
+      "source": "autopilot_cube_orange",
+      "target": "elevator_servo",
+      "protocol": "pwm",
+      "sourcePin": "MAIN4",
+      "targetPin": "PWM"
+    },
+    {
+      "type": "data",
+      "label": "Rudder Servo Control",
+      "source": "autopilot_cube_orange",
+      "target": "rudder_servo",
+      "protocol": "pwm",
+      "sourcePin": "MAIN5",
+      "targetPin": "PWM"
+    },
+    {
+      "type": "data",
+      "label": "Camera Shutter Trigger",
+      "source": "autopilot_cube_orange",
+      "target": "camera_sony_ilx_lr1",
+      "protocol": "gpio",
+      "sourcePin": "AUX1",
+      "targetPin": "POWER_CONTROL_MULTI"
+    },
+    {
+      "type": "power",
+      "label": "ESC 3-Phase Output",
+      "source": "esc_propulsion",
+      "target": "moter_propulsion",
+      "current": "40A",
+      "voltage": "22.2V"
+    }
+  ],
+  "mechanicalConnections": [
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": -230
+      },
+      "label": "M3 screws into brass inserts",
+      "source": "fuselage_center_3d",
+      "target": "fuselage_nose_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 265
+      },
+      "label": "M3 screws into brass inserts",
+      "source": "fuselage_center_3d",
+      "target": "fuselage_tail_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "label": "Friction fit through fuselage center tube",
+      "source": "fuselage_center_3d",
+      "target": "carbon_spar_main"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 128
+      },
+      "label": "Clamped with M3 bolts and locknuts",
+      "source": "fuselage_tail_3d",
+      "target": "carbon_spar_tail",
+      "rotation": {
+        "x": 0,
+        "y": 90,
+        "z": 0
+      }
+    },
+    {
+      "delta": {
+        "x": 235,
+        "y": 0,
+        "z": 0
+      },
+      "label": "M3 alignment bolts",
+      "source": "wing_section_l1_3d",
+      "target": "fuselage_center_3d"
+    },
+    {
+      "delta": {
+        "x": -250,
+        "y": 0,
+        "z": 0
+      },
+      "label": "M3 alignment bolts",
+      "source": "wing_section_r1_3d",
+      "target": "fuselage_center_3d"
+    },
+    {
+      "delta": {
+        "x": 350,
+        "y": 0,
+        "z": 0
+      },
+      "label": "Slide fit onto main spar",
+      "source": "wing_section_l1_3d",
+      "target": "carbon_spar_main"
+    },
+    {
+      "delta": {
+        "x": -350,
+        "y": 0,
+        "z": 0
+      },
+      "label": "Slide fit onto main spar",
+      "source": "wing_section_r1_3d",
+      "target": "carbon_spar_main"
+    },
+    {
+      "delta": {
+        "x": -300,
+        "y": 0,
+        "z": 0
+      },
+      "label": "M3 joint bolts and tape",
+      "source": "wing_section_l2_3d",
+      "target": "wing_section_l1_3d"
+    },
+    {
+      "delta": {
+        "x": 300,
+        "y": 0,
+        "z": 0
+      },
+      "label": "M3 joint bolts and tape",
+      "source": "wing_section_r2_3d",
+      "target": "wing_section_r1_3d"
+    },
+    {
+      "delta": {
+        "x": 250,
+        "y": 0,
+        "z": 0
+      },
+      "label": "CA Glue and M3 alignment pin",
+      "source": "wing_tip_l_3d",
+      "target": "wing_section_l2_3d"
+    },
+    {
+      "delta": {
+        "x": -250,
+        "y": 0,
+        "z": 0
+      },
+      "label": "CA Glue and M3 alignment pin",
+      "source": "wing_tip_r_3d",
+      "target": "wing_section_r2_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": -128
+      },
+      "label": "M3 clamping bracket",
+      "source": "tail_stabilizer_h_3d",
+      "target": "carbon_spar_tail"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -21,
+        "z": -158
+      },
+      "label": "M3 clamping bracket",
+      "source": "tail_stabilizer_v_3d",
+      "target": "carbon_spar_tail"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -75,
+        "z": 0
+      },
+      "label": "M3 bolts and brass inserts",
+      "source": "fuselage_center_3d",
+      "target": "battery_tray_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "label": "Threaded through slot rails",
+      "source": "battery_tray_3d",
+      "target": "battery_strap"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 150
+      },
+      "label": "Four M3 bolts and locknuts",
+      "source": "fuselage_nose_3d",
+      "target": "motor_mount_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -72.5,
+        "z": 0
+      },
+      "label": "Push-fit into baseplate",
+      "source": "fuselage_center_3d",
+      "target": "vibration_damping_balls"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -32.5,
+        "z": 0
+      },
+      "label": "Suspended push-fit attachment",
+      "source": "vibration_damping_balls",
+      "target": "camera_gimbal_mount_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -32.5,
+        "z": 0
+      },
+      "label": "M3 mounting screws",
+      "source": "wing_section_l1_3d",
+      "target": "aileron_servo_l_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 32.5,
+        "z": 0
+      },
+      "label": "M3 mounting screws",
+      "source": "wing_section_r1_3d",
+      "target": "aileron_servo_r_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 17.5,
+        "z": 0
+      },
+      "label": "M3 mounting screws",
+      "source": "tail_stabilizer_h_3d",
+      "target": "elevator_servo_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -35,
+        "z": 0
+      },
+      "label": "M3 mounting screws",
+      "source": "tail_stabilizer_v_3d",
+      "target": "rudder_servo_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 30,
+        "z": 0
+      },
+      "label": "M2 bolts through control surface",
+      "source": "wing_section_l2_3d",
+      "target": "control_horns_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 30,
+        "z": 0
+      },
+      "label": "M2 bolts through control surface",
+      "source": "wing_section_r2_3d",
+      "target": "control_horns_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 17.5,
+        "z": 0
+      },
+      "label": "M2 bolts through control surface",
+      "source": "tail_stabilizer_h_3d",
+      "target": "control_horns_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -35,
+        "z": 0
+      },
+      "label": "M2 bolts through control surface",
+      "source": "tail_stabilizer_v_3d",
+      "target": "control_horns_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 17
+      },
+      "label": "M2 clevis connection",
+      "source": "control_horns_3d",
+      "target": "pushrods_linkages",
+      "rotation": {
+        "x": 0,
+        "y": 90,
+        "z": 0
+      }
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 71,
+        "z": 0
+      },
+      "label": "M3 bolts and brass inserts",
+      "source": "fuselage_center_3d",
+      "target": "autopilot_cube_orange_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 75,
+        "z": 0
+      },
+      "label": "M3 nylon standoffs",
+      "source": "fuselage_center_3d",
+      "target": "esc_propulsion_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 71,
+        "z": 0
+      },
+      "label": "Double-sided tape and zip ties",
+      "source": "fuselage_center_3d",
+      "target": "backup_4g_dongle_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 70,
+        "z": 0
+      },
+      "label": "M3 clamping collar",
+      "source": "fuselage_tail_3d",
+      "target": "rfd900_antenna_mount_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 70,
+        "z": 0
+      },
+      "label": "M3 mounting screws",
+      "source": "fuselage_nose_3d",
+      "target": "pitot_tube_mount_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 72.5,
+        "z": 0
+      },
+      "label": "M3 standoff screws",
+      "source": "fuselage_center_3d",
+      "target": "gnss_rtk_here4_mount"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "label": "Threaded engagement",
+      "source": "screws_m3_kit",
+      "target": "brass_inserts_m3"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -3.7,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "camera_gimbal_mount_3d",
+      "target": "camera_sony_ilx_lr1"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 49.5,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "battery_tray_3d",
+      "target": "li_ion_battery_pack"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 44.5,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "motor_mount_3d",
+      "target": "moter_propulsion"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 22.3,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "rfd900_antenna_mount_3d",
+      "target": "rfd900_telemetry"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 15,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "pitot_tube_mount_3d",
+      "target": "airspeed_sensor_ms5525"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 14.7,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "autopilot_cube_orange_mount",
+      "target": "autopilot_cube_orange"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 15.5,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "gnss_rtk_here4_mount",
+      "target": "gnss_rtk_here4"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 13,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "backup_4g_dongle_mount",
+      "target": "backup_4g_dongle"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 18,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "esc_propulsion_mount",
+      "target": "esc_propulsion"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 23.8,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "aileron_servo_l_mount",
+      "target": "aileron_servo_l"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 23.8,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "aileron_servo_r_mount",
+      "target": "aileron_servo_r"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 3.8,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "elevator_servo_mount",
+      "target": "elevator_servo"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 3.8,
+        "z": 0
+      },
+      "label": "mount",
+      "source": "rudder_servo_mount",
+      "target": "rudder_servo"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": -35,
+        "z": 0
+      },
+      "label": "attached",
+      "source": "carbon_spar_main",
+      "target": "camera_gimbal_mount_3d"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 9,
+        "z": 0
+      },
+      "label": "attached",
+      "source": "carbon_spar_main",
+      "target": "bec_servo_power"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 9,
+        "z": 0
+      },
+      "label": "attached",
+      "source": "carbon_spar_main",
+      "target": "camera_power_regulator"
+    },
+    {
+      "delta": {
+        "x": 0,
+        "y": 10,
+        "z": 0
+      },
+      "label": "attached",
+      "source": "carbon_spar_main",
+      "target": "power_monitor_hall"
+    }
+  ],
+  "suggestedAskPrompts": [
+    "Does the RFD900 telemetry have a dedicated 5V BEC?",
+    "Will 3D printed PETG joints survive high-speed landings?",
+    "Can the 6S battery power the autopilot directly?"
+  ],
+  "suggestedAskPromptsHash": "v6::Fixed-Wing Mapping Drone::aileron_servo_l,aileron_servo_l_mount,aileron_servo_r,aileron_servo_r_mount,airspeed_sensor_ms5525,autopilot_cube_orange,autopilot_cube_orange_mount,backup_4g_dongle,backup_4g_dongle_mount,battery_strap,battery_tray_3d,bec_servo_power,brass_inserts_m3,camera_gimbal_mount_3d,camera_power_regulator,camera_sony_ilx_lr1,carbon_spar_main,carbon_spar_tail,control_horns_3d,elevator_servo,elevator_servo_mount,esc_propulsion,esc_propulsion_mount,fuselage_center_3d,fuselage_nose_3d,fuselage_tail_3d,gnss_rtk_here4,gnss_rtk_here4_mount,li_ion_battery_pack,moter_propulsion,motor_mount_3d,pitot_tube_mount_3d,power_monitor_hall,pushrods_linkages,rfd900_antenna_mount_3d,rfd900_telemetry,rudder_servo,rudder_servo_mount,screws_m3_kit,tail_stabilizer_h_3d,tail_stabilizer_v_3d,vibration_damping_balls,wing_section_l1_3d,wing_section_l2_3d,wing_section_r1_3d,wing_section_r2_3d,wing_tip_l_3d,wing_tip_r_3d::autopilot_cube_orange>aileron_servo_l:data;autopilot_cube_orange>aileron_servo_r:data;autopilot_cube_orange>airspeed_sensor_ms5525:data;autopilot_cube_orange>airspeed_sensor_ms5525:power;autopilot_cube_orange>backup_4g_dongle:data;autopilot_cube_orange>backup_4g_dongle:power;autopilot_cube_orange>camera_sony_ilx_lr1:data;autopilot_cube_orange>elevator_servo:data;autopilot_cube_orange>esc_propulsion:data;autopilot_cube_orange>gnss_rtk_here4:data;autopilot_cube_orange>gnss_rtk_here4:power;autopilot_cube_orange>rfd900_telemetry:data;autopilot_cube_orange>rfd900_telemetry:power;autopilot_cube_orange>rudder_servo:data;bec_servo_power>aileron_servo_l:power;bec_servo_power>aileron_servo_r:power;bec_servo_power>elevator_servo:power;bec_servo_power>rudder_servo:power;camera_power_regulator>camera_sony_ilx_lr1:power;esc_propulsion>moter_propulsion:power;li_ion_battery_pack>power_monitor_hall:power;power_monitor_hall>autopilot_cube_orange:data;power_monitor_hall>autopilot_cube_orange:data;power_monitor_hall>autopilot_cube_orange:power;power_monitor_hall>bec_servo_power:power;power_monitor_hall>camera_power_regulator:power;power_monitor_hall>esc_propulsion:power::aileron_servo_l_mount~aileron_servo_l;aileron_servo_r_mount~aileron_servo_r;autopilot_cube_orange_mount~autopilot_cube_orange;backup_4g_dongle_mount~backup_4g_dongle;battery_tray_3d~battery_strap;battery_tray_3d~li_ion_battery_pack;camera_gimbal_mount_3d~camera_sony_ilx_lr1;carbon_spar_main~bec_servo_power;carbon_spar_main~camera_gimbal_mount_3d;carbon_spar_main~camera_power_regulator;carbon_spar_main~power_monitor_hall;control_horns_3d~pushrods_linkages;elevator_servo_mount~elevator_servo;esc_propulsion_mount~esc_propulsion;fuselage_center_3d~autopilot_cube_orange_mount;fuselage_center_3d~backup_4g_dongle_mount;fuselage_center_3d~battery_tray_3d;fuselage_center_3d~carbon_spar_main;fuselage_center_3d~esc_propulsion_mount;fuselage_center_3d~fuselage_nose_3d;fuselage_center_3d~fuselage_tail_3d;fuselage_center_3d~gnss_rtk_here4_mount;fuselage_center_3d~vibration_damping_balls;fuselage_nose_3d~motor_mount_3d;fuselage_nose_3d~pitot_tube_mount_3d;fuselage_tail_3d~carbon_spar_tail;fuselage_tail_3d~rfd900_antenna_mount_3d;gnss_rtk_here4_mount~gnss_rtk_here4;motor_mount_3d~moter_propulsion;pitot_tube_mount_3d~airspeed_sensor_ms5525;rfd900_antenna_mount_3d~rfd900_telemetry;rudder_servo_mount~rudder_servo;screws_m3_kit~brass_inserts_m3;tail_stabilizer_h_3d~carbon_spar_tail;tail_stabilizer_h_3d~control_horns_3d;tail_stabilizer_h_3d~elevator_servo_mount;tail_stabilizer_v_3d~carbon_spar_tail;tail_stabilizer_v_3d~control_horns_3d;tail_stabilizer_v_3d~rudder_servo_mount;vibration_damping_balls~camera_gimbal_mount_3d;wing_section_l1_3d~aileron_servo_l_mount;wing_section_l1_3d~carbon_spar_main;wing_section_l1_3d~fuselage_center_3d;wing_section_l2_3d~control_horns_3d;wing_section_l2_3d~wing_section_l1_3d;wing_section_r1_3d~aileron_servo_r_mount;wing_section_r1_3d~carbon_spar_main;wing_section_r1_3d~fuselage_center_3d;wing_section_r2_3d~control_horns_3d;wing_section_r2_3d~wing_section_r1_3d;wing_tip_l_3d~wing_section_l2_3d;wing_tip_r_3d~wing_section_r2_3d",
+  "suggestedImagePrompts": [
+    "sleek white 3D-printed modular fuselage with carbon fiber wing spars",
+    "smooth matte white plastic with exposed glossy twill carbon tubes",
+    "resting on a grassy field under bright midday sun"
+  ],
+  "suggestedImagePromptsHash": "v1::Fixed-Wing Mapping Drone::aileron_servo_l,aileron_servo_l_mount,aileron_servo_r,aileron_servo_r_mount,airspeed_sensor_ms5525,autopilot_cube_orange,autopilot_cube_orange_mount,backup_4g_dongle,backup_4g_dongle_mount,battery_strap,battery_tray_3d,bec_servo_power,brass_inserts_m3,camera_gimbal_mount_3d,camera_power_regulator,camera_sony_ilx_lr1,carbon_spar_main,carbon_spar_tail,control_horns_3d,elevator_servo,elevator_servo_mount,esc_propulsion,esc_propulsion_mount,fuselage_center_3d,fuselage_nose_3d,fuselage_tail_3d,gnss_rtk_here4,gnss_rtk_here4_mount,li_ion_battery_pack,moter_propulsion,motor_mount_3d,pitot_tube_mount_3d,power_monitor_hall,pushrods_linkages,rfd900_antenna_mount_3d,rfd900_telemetry,rudder_servo,rudder_servo_mount,screws_m3_kit,tail_stabilizer_h_3d,tail_stabilizer_v_3d,vibration_damping_balls,wing_section_l1_3d,wing_section_l2_3d,wing_section_r1_3d,wing_section_r2_3d,wing_tip_l_3d,wing_tip_r_3d::autopilot_cube_orange>aileron_servo_l:data;autopilot_cube_orange>aileron_servo_r:data;autopilot_cube_orange>airspeed_sensor_ms5525:data;autopilot_cube_orange>airspeed_sensor_ms5525:power;autopilot_cube_orange>backup_4g_dongle:data;autopilot_cube_orange>backup_4g_dongle:power;autopilot_cube_orange>camera_sony_ilx_lr1:data;autopilot_cube_orange>elevator_servo:data;autopilot_cube_orange>esc_propulsion:data;autopilot_cube_orange>gnss_rtk_here4:data;autopilot_cube_orange>gnss_rtk_here4:power;autopilot_cube_orange>rfd900_telemetry:data;autopilot_cube_orange>rfd900_telemetry:power;autopilot_cube_orange>rudder_servo:data;bec_servo_power>aileron_servo_l:power;bec_servo_power>aileron_servo_r:power;bec_servo_power>elevator_servo:power;bec_servo_power>rudder_servo:power;camera_power_regulator>camera_sony_ilx_lr1:power;esc_propulsion>moter_propulsion:power;li_ion_battery_pack>power_monitor_hall:power;power_monitor_hall>autopilot_cube_orange:data;power_monitor_hall>autopilot_cube_orange:data;power_monitor_hall>autopilot_cube_orange:power;power_monitor_hall>bec_servo_power:power;power_monitor_hall>camera_power_regulator:power;power_monitor_hall>esc_propulsion:power::aileron_servo_l_mount~aileron_servo_l;aileron_servo_r_mount~aileron_servo_r;autopilot_cube_orange_mount~autopilot_cube_orange;backup_4g_dongle_mount~backup_4g_dongle;battery_tray_3d~battery_strap;battery_tray_3d~li_ion_battery_pack;camera_gimbal_mount_3d~camera_sony_ilx_lr1;carbon_spar_main~bec_servo_power;carbon_spar_main~camera_gimbal_mount_3d;carbon_spar_main~camera_power_regulator;carbon_spar_main~power_monitor_hall;control_horns_3d~pushrods_linkages;elevator_servo_mount~elevator_servo;esc_propulsion_mount~esc_propulsion;fuselage_center_3d~autopilot_cube_orange_mount;fuselage_center_3d~backup_4g_dongle_mount;fuselage_center_3d~battery_tray_3d;fuselage_center_3d~carbon_spar_main;fuselage_center_3d~esc_propulsion_mount;fuselage_center_3d~fuselage_nose_3d;fuselage_center_3d~fuselage_tail_3d;fuselage_center_3d~gnss_rtk_here4_mount;fuselage_center_3d~vibration_damping_balls;fuselage_nose_3d~motor_mount_3d;fuselage_nose_3d~pitot_tube_mount_3d;fuselage_tail_3d~carbon_spar_tail;fuselage_tail_3d~rfd900_antenna_mount_3d;gnss_rtk_here4_mount~gnss_rtk_here4;motor_mount_3d~moter_propulsion;pitot_tube_mount_3d~airspeed_sensor_ms5525;rfd900_antenna_mount_3d~rfd900_telemetry;rudder_servo_mount~rudder_servo;screws_m3_kit~brass_inserts_m3;tail_stabilizer_h_3d~carbon_spar_tail;tail_stabilizer_h_3d~control_horns_3d;tail_stabilizer_h_3d~elevator_servo_mount;tail_stabilizer_v_3d~carbon_spar_tail;tail_stabilizer_v_3d~control_horns_3d;tail_stabilizer_v_3d~rudder_servo_mount;vibration_damping_balls~camera_gimbal_mount_3d;wing_section_l1_3d~aileron_servo_l_mount;wing_section_l1_3d~carbon_spar_main;wing_section_l1_3d~fuselage_center_3d;wing_section_l2_3d~control_horns_3d;wing_section_l2_3d~wing_section_l1_3d;wing_section_r1_3d~aileron_servo_r_mount;wing_section_r1_3d~carbon_spar_main;wing_section_r1_3d~fuselage_center_3d;wing_section_r2_3d~control_horns_3d;wing_section_r2_3d~wing_section_r1_3d;wing_tip_l_3d~wing_section_l2_3d;wing_tip_r_3d~wing_section_r2_3d"
+}

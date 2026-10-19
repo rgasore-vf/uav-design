@@ -1,0 +1,584 @@
+[
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": -230
+    },
+    "label": "M3 screws into brass inserts",
+    "source": "fuselage_center_3d",
+    "target": "fuselage_nose_3d",
+    "description": "Section Centrale Fuselage 3D ↔ Nez Fuselage 3D — M3 screws into brass inserts; Nez Fuselage 3D sits 230mm back from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 265
+    },
+    "label": "M3 screws into brass inserts",
+    "source": "fuselage_center_3d",
+    "target": "fuselage_tail_3d",
+    "description": "Section Centrale Fuselage 3D ↔ Section Queue Fuselage 3D — M3 screws into brass inserts; Section Queue Fuselage 3D sits 265mm forward from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "label": "Friction fit through fuselage center tube",
+    "source": "fuselage_center_3d",
+    "target": "carbon_spar_main",
+    "description": "Section Centrale Fuselage 3D ↔ Clé d'Aile Principale — Friction fit through fuselage center tube; Clé d'Aile Principale centered on Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 128
+    },
+    "label": "Clamped with M3 bolts and locknuts",
+    "source": "fuselage_tail_3d",
+    "target": "carbon_spar_tail",
+    "rotation": {
+      "x": 0,
+      "y": 90,
+      "z": 0
+    },
+    "description": "Section Queue Fuselage 3D ↔ Tube de Queue Carbone — Clamped with M3 bolts and locknuts; Tube de Queue Carbone sits 128mm forward from Section Queue Fuselage 3D; Tube de Queue Carbone rotated 90° about Y"
+  },
+  {
+    "delta": {
+      "x": 235,
+      "y": 0,
+      "z": 0
+    },
+    "label": "M3 alignment bolts",
+    "source": "wing_section_l1_3d",
+    "target": "fuselage_center_3d",
+    "description": "Aile Gauche Section Interne ↔ Section Centrale Fuselage 3D — M3 alignment bolts; Section Centrale Fuselage 3D sits 235mm right from Aile Gauche Section Interne"
+  },
+  {
+    "delta": {
+      "x": -250,
+      "y": 0,
+      "z": 0
+    },
+    "label": "M3 alignment bolts",
+    "source": "wing_section_r1_3d",
+    "target": "fuselage_center_3d",
+    "description": "Aile Droite Section Interne ↔ Section Centrale Fuselage 3D — M3 alignment bolts; Section Centrale Fuselage 3D sits 250mm left from Aile Droite Section Interne"
+  },
+  {
+    "delta": {
+      "x": 350,
+      "y": 0,
+      "z": 0
+    },
+    "label": "Slide fit onto main spar",
+    "source": "wing_section_l1_3d",
+    "target": "carbon_spar_main",
+    "description": "Aile Gauche Section Interne ↔ Clé d'Aile Principale — Slide fit onto main spar; Clé d'Aile Principale sits 350mm right from Aile Gauche Section Interne"
+  },
+  {
+    "delta": {
+      "x": -350,
+      "y": 0,
+      "z": 0
+    },
+    "label": "Slide fit onto main spar",
+    "source": "wing_section_r1_3d",
+    "target": "carbon_spar_main",
+    "description": "Aile Droite Section Interne ↔ Clé d'Aile Principale — Slide fit onto main spar; Clé d'Aile Principale sits 350mm left from Aile Droite Section Interne"
+  },
+  {
+    "delta": {
+      "x": -300,
+      "y": 0,
+      "z": 0
+    },
+    "label": "M3 joint bolts and tape",
+    "source": "wing_section_l2_3d",
+    "target": "wing_section_l1_3d",
+    "description": "Aile Gauche Section Externe ↔ Aile Gauche Section Interne — M3 joint bolts and tape; Aile Gauche Section Interne sits 300mm left from Aile Gauche Section Externe"
+  },
+  {
+    "delta": {
+      "x": 300,
+      "y": 0,
+      "z": 0
+    },
+    "label": "M3 joint bolts and tape",
+    "source": "wing_section_r2_3d",
+    "target": "wing_section_r1_3d",
+    "description": "Aile Droite Section Externe ↔ Aile Droite Section Interne — M3 joint bolts and tape; Aile Droite Section Interne sits 300mm right from Aile Droite Section Externe"
+  },
+  {
+    "delta": {
+      "x": 250,
+      "y": 0,
+      "z": 0
+    },
+    "label": "CA Glue and M3 alignment pin",
+    "source": "wing_tip_l_3d",
+    "target": "wing_section_l2_3d",
+    "description": "Saumon d'Aile Gauche ↔ Aile Gauche Section Externe — CA Glue and M3 alignment pin; Aile Gauche Section Externe sits 250mm right from Saumon d'Aile Gauche"
+  },
+  {
+    "delta": {
+      "x": -250,
+      "y": 0,
+      "z": 0
+    },
+    "label": "CA Glue and M3 alignment pin",
+    "source": "wing_tip_r_3d",
+    "target": "wing_section_r2_3d",
+    "description": "Saumon d'Aile Droite ↔ Aile Droite Section Externe — CA Glue and M3 alignment pin; Aile Droite Section Externe sits 250mm left from Saumon d'Aile Droite"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": -128
+    },
+    "label": "M3 clamping bracket",
+    "source": "tail_stabilizer_h_3d",
+    "target": "carbon_spar_tail",
+    "description": "Empennage Horizontal ↔ Tube de Queue Carbone — M3 clamping bracket; Tube de Queue Carbone sits 128mm back from Empennage Horizontal"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -21,
+      "z": -158
+    },
+    "label": "M3 clamping bracket",
+    "source": "tail_stabilizer_v_3d",
+    "target": "carbon_spar_tail",
+    "description": "Empennage Vertival ↔ Tube de Queue Carbone — M3 clamping bracket; Tube de Queue Carbone sits 21mm down, 158mm back from Empennage Vertival"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -75,
+      "z": 0
+    },
+    "label": "M3 bolts and brass inserts",
+    "source": "fuselage_center_3d",
+    "target": "battery_tray_3d",
+    "description": "Section Centrale Fuselage 3D ↔ Bac de Batterie Amovible — M3 bolts and brass inserts; Bac de Batterie Amovible sits 75mm down from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "label": "Threaded through slot rails",
+    "source": "battery_tray_3d",
+    "target": "battery_strap",
+    "description": "Bac de Batterie Amovible ↔ Sangles de Batterie Antidérapantes — Threaded through slot rails; Sangles de Batterie Antidérapantes centered on Bac de Batterie Amovible"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 150
+    },
+    "label": "Four M3 bolts and locknuts",
+    "source": "fuselage_nose_3d",
+    "target": "motor_mount_3d",
+    "description": "Nez Fuselage 3D ↔ Bâti Moteur Renforcé — Four M3 bolts and locknuts; Bâti Moteur Renforcé sits 150mm forward from Nez Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -72.5,
+      "z": 0
+    },
+    "label": "Push-fit into baseplate",
+    "source": "fuselage_center_3d",
+    "target": "vibration_damping_balls",
+    "description": "Section Centrale Fuselage 3D ↔ Boules Amortissantes — Push-fit into baseplate; Boules Amortissantes sits 72.5mm down from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -32.5,
+      "z": 0
+    },
+    "label": "Suspended push-fit attachment",
+    "source": "vibration_damping_balls",
+    "target": "camera_gimbal_mount_3d",
+    "description": "Boules Amortissantes ↔ Support Caméra Fixe Sony — Suspended push-fit attachment; Support Caméra Fixe Sony sits 32.5mm down from Boules Amortissantes"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -32.5,
+      "z": 0
+    },
+    "label": "M3 mounting screws",
+    "source": "wing_section_l1_3d",
+    "target": "aileron_servo_l_mount",
+    "description": "Aile Gauche Section Interne ↔ Left Aileron Servo Mount — M3 mounting screws; Left Aileron Servo Mount sits 32.5mm down from Aile Gauche Section Interne"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 32.5,
+      "z": 0
+    },
+    "label": "M3 mounting screws",
+    "source": "wing_section_r1_3d",
+    "target": "aileron_servo_r_mount",
+    "description": "Aile Droite Section Interne ↔ Right Aileron Servo Mount — M3 mounting screws; Right Aileron Servo Mount sits 32.5mm up from Aile Droite Section Interne"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 17.5,
+      "z": 0
+    },
+    "label": "M3 mounting screws",
+    "source": "tail_stabilizer_h_3d",
+    "target": "elevator_servo_mount",
+    "description": "Empennage Horizontal ↔ Elevator Servo Mount — M3 mounting screws; Elevator Servo Mount sits 17.5mm up from Empennage Horizontal"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -35,
+      "z": 0
+    },
+    "label": "M3 mounting screws",
+    "source": "tail_stabilizer_v_3d",
+    "target": "rudder_servo_mount",
+    "description": "Empennage Vertival ↔ Rudder Servo Mount — M3 mounting screws; Rudder Servo Mount sits 35mm down from Empennage Vertival"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 30,
+      "z": 0
+    },
+    "label": "M2 bolts through control surface",
+    "source": "wing_section_l2_3d",
+    "target": "control_horns_3d",
+    "description": "Aile Gauche Section Externe ↔ Guignols de Commande Surfaces Mobiles — M2 bolts through control surface; Guignols de Commande Surfaces Mobiles sits 30mm up from Aile Gauche Section Externe"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 30,
+      "z": 0
+    },
+    "label": "M2 bolts through control surface",
+    "source": "wing_section_r2_3d",
+    "target": "control_horns_3d",
+    "description": "Aile Droite Section Externe ↔ Guignols de Commande Surfaces Mobiles — M2 bolts through control surface; Guignols de Commande Surfaces Mobiles sits 30mm up from Aile Droite Section Externe"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 17.5,
+      "z": 0
+    },
+    "label": "M2 bolts through control surface",
+    "source": "tail_stabilizer_h_3d",
+    "target": "control_horns_3d",
+    "description": "Empennage Horizontal ↔ Guignols de Commande Surfaces Mobiles — M2 bolts through control surface; Guignols de Commande Surfaces Mobiles sits 17.5mm up from Empennage Horizontal"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -35,
+      "z": 0
+    },
+    "label": "M2 bolts through control surface",
+    "source": "tail_stabilizer_v_3d",
+    "target": "control_horns_3d",
+    "description": "Empennage Vertival ↔ Guignols de Commande Surfaces Mobiles — M2 bolts through control surface; Guignols de Commande Surfaces Mobiles sits 35mm down from Empennage Vertival"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 17
+    },
+    "label": "M2 clevis connection",
+    "source": "control_horns_3d",
+    "target": "pushrods_linkages",
+    "rotation": {
+      "x": 0,
+      "y": 90,
+      "z": 0
+    },
+    "description": "Guignols de Commande Surfaces Mobiles ↔ Tringlerie de Commande M2 — M2 clevis connection; Tringlerie de Commande M2 sits 17mm forward from Guignols de Commande Surfaces Mobiles; Tringlerie de Commande M2 rotated 90° about Y"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 71,
+      "z": 0
+    },
+    "label": "M3 bolts and brass inserts",
+    "source": "fuselage_center_3d",
+    "target": "autopilot_cube_orange_mount",
+    "description": "Section Centrale Fuselage 3D ↔ Flight Controller Mount — M3 bolts and brass inserts; Flight Controller Mount sits 71mm up from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 75,
+      "z": 0
+    },
+    "label": "M3 nylon standoffs",
+    "source": "fuselage_center_3d",
+    "target": "esc_propulsion_mount",
+    "description": "Section Centrale Fuselage 3D ↔ Electronic Speed Controller Mount — M3 nylon standoffs; Electronic Speed Controller Mount sits 75mm up from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 71,
+      "z": 0
+    },
+    "label": "Double-sided tape and zip ties",
+    "source": "fuselage_center_3d",
+    "target": "backup_4g_dongle_mount",
+    "description": "Section Centrale Fuselage 3D ↔ Secondary LTE Backup Link Mount — Double-sided tape and zip ties; Secondary LTE Backup Link Mount sits 71mm up from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 70,
+      "z": 0
+    },
+    "label": "M3 clamping collar",
+    "source": "fuselage_tail_3d",
+    "target": "rfd900_antenna_mount_3d",
+    "description": "Section Queue Fuselage 3D ↔ Support Antenne RFD900 — M3 clamping collar; Support Antenne RFD900 sits 70mm up from Section Queue Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 70,
+      "z": 0
+    },
+    "label": "M3 mounting screws",
+    "source": "fuselage_nose_3d",
+    "target": "pitot_tube_mount_3d",
+    "description": "Nez Fuselage 3D ↔ Support Tube Pitot — M3 mounting screws; Support Tube Pitot sits 70mm up from Nez Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 72.5,
+      "z": 0
+    },
+    "label": "M3 standoff screws",
+    "source": "fuselage_center_3d",
+    "target": "gnss_rtk_here4_mount",
+    "description": "Section Centrale Fuselage 3D ↔ GNSS RTK Module Mount — M3 standoff screws; GNSS RTK Module Mount sits 72.5mm up from Section Centrale Fuselage 3D"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "label": "Threaded engagement",
+    "source": "screws_m3_kit",
+    "target": "brass_inserts_m3",
+    "description": "Kit Visserie M3 Assemblage ↔ Inserts Filetés en Laiton M3 — Threaded engagement; Inserts Filetés en Laiton M3 centered on Kit Visserie M3 Assemblage"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -3.7,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "camera_gimbal_mount_3d",
+    "target": "camera_sony_ilx_lr1",
+    "description": "Support Caméra Fixe Sony ↔ Aerial Mapping Camera — mount; Aerial Mapping Camera sits 3.7mm down from Support Caméra Fixe Sony"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 49.5,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "battery_tray_3d",
+    "target": "li_ion_battery_pack",
+    "description": "Bac de Batterie Amovible ↔ Main Li-ion Pack (6S4P) — mount; Main Li-ion Pack (6S4P) sits 49.5mm up from Bac de Batterie Amovible"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 44.5,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "motor_mount_3d",
+    "target": "moter_propulsion",
+    "description": "Bâti Moteur Renforcé ↔ Brushless Motor — mount; Brushless Motor sits 44.5mm up from Bâti Moteur Renforcé"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 22.3,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "rfd900_antenna_mount_3d",
+    "target": "rfd900_telemetry",
+    "description": "Support Antenne RFD900 ↔ Primary Long Range Telemetry — mount; Primary Long Range Telemetry sits 22.3mm up from Support Antenne RFD900"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 15,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "pitot_tube_mount_3d",
+    "target": "airspeed_sensor_ms5525",
+    "description": "Support Tube Pitot ↔ Digital Airspeed Sensor — mount; Digital Airspeed Sensor sits 15mm up from Support Tube Pitot"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 14.7,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "autopilot_cube_orange_mount",
+    "target": "autopilot_cube_orange",
+    "description": "Flight Controller Mount ↔ Flight Controller — mount; Flight Controller sits 14.7mm up from Flight Controller Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 15.5,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "gnss_rtk_here4_mount",
+    "target": "gnss_rtk_here4",
+    "description": "GNSS RTK Module Mount ↔ GNSS RTK Module — mount; GNSS RTK Module sits 15.5mm up from GNSS RTK Module Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 13,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "backup_4g_dongle_mount",
+    "target": "backup_4g_dongle",
+    "description": "Secondary LTE Backup Link Mount ↔ Secondary LTE Backup Link — mount; Secondary LTE Backup Link sits 13mm up from Secondary LTE Backup Link Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 18,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "esc_propulsion_mount",
+    "target": "esc_propulsion",
+    "description": "Electronic Speed Controller Mount ↔ Electronic Speed Controller — mount; Electronic Speed Controller sits 18mm up from Electronic Speed Controller Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 23.8,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "aileron_servo_l_mount",
+    "target": "aileron_servo_l",
+    "description": "Left Aileron Servo Mount ↔ Left Aileron Servo — mount; Left Aileron Servo sits 23.8mm up from Left Aileron Servo Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 23.8,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "aileron_servo_r_mount",
+    "target": "aileron_servo_r",
+    "description": "Right Aileron Servo Mount ↔ Right Aileron Servo — mount; Right Aileron Servo sits 23.8mm up from Right Aileron Servo Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 3.8,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "elevator_servo_mount",
+    "target": "elevator_servo",
+    "description": "Elevator Servo Mount ↔ Elevator Servo — mount; Elevator Servo sits 3.8mm up from Elevator Servo Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 3.8,
+      "z": 0
+    },
+    "label": "mount",
+    "source": "rudder_servo_mount",
+    "target": "rudder_servo",
+    "description": "Rudder Servo Mount ↔ Rudder Servo — mount; Rudder Servo sits 3.8mm up from Rudder Servo Mount"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": -35,
+      "z": 0
+    },
+    "label": "attached",
+    "source": "carbon_spar_main",
+    "target": "camera_gimbal_mount_3d",
+    "description": "Clé d'Aile Principale ↔ Support Caméra Fixe Sony — attached; Support Caméra Fixe Sony sits 35mm down from Clé d'Aile Principale"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 9,
+      "z": 0
+    },
+    "label": "attached",
+    "source": "carbon_spar_main",
+    "target": "bec_servo_power",
+    "description": "Clé d'Aile Principale ↔ Servo Battery Eliminator Circuit — attached; Servo Battery Eliminator Circuit sits 9mm up from Clé d'Aile Principale"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 9,
+      "z": 0
+    },
+    "label": "attached",
+    "source": "carbon_spar_main",
+    "target": "camera_power_regulator",
+    "description": "Clé d'Aile Principale ↔ Camera DC-DC Regulator (12V) — attached; Camera DC-DC Regulator (12V) sits 9mm up from Clé d'Aile Principale"
+  },
+  {
+    "delta": {
+      "x": 0,
+      "y": 10,
+      "z": 0
+    },
+    "label": "attached",
+    "source": "carbon_spar_main",
+    "target": "power_monitor_hall",
+    "description": "Clé d'Aile Principale ↔ Main Power Monitor — attached; Main Power Monitor sits 10mm up from Clé d'Aile Principale"
+  }
+]

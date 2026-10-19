@@ -1,0 +1,230 @@
+[
+  {
+    "type": "power",
+    "label": "Main Battery Output",
+    "source": "li_ion_battery_pack",
+    "target": "power_monitor_hall",
+    "current": "45A",
+    "voltage": "22.2V"
+  },
+  {
+    "type": "power",
+    "label": "Battery Power to ESC",
+    "source": "power_monitor_hall",
+    "target": "esc_propulsion",
+    "current": "40A",
+    "voltage": "22.2V"
+  },
+  {
+    "type": "power",
+    "label": "Battery Power to Camera Regulator",
+    "source": "power_monitor_hall",
+    "target": "camera_power_regulator",
+    "current": "2A",
+    "voltage": "22.2V"
+  },
+  {
+    "type": "power",
+    "label": "Battery Power to Servo BEC",
+    "source": "power_monitor_hall",
+    "target": "bec_servo_power",
+    "current": "5A",
+    "voltage": "22.2V"
+  },
+  {
+    "type": "data",
+    "label": "Voltage Monitoring",
+    "source": "power_monitor_hall",
+    "target": "autopilot_cube_orange",
+    "protocol": "analog",
+    "sourcePin": "OUT_V",
+    "targetPin": "POWER1"
+  },
+  {
+    "type": "data",
+    "label": "Current Monitoring",
+    "source": "power_monitor_hall",
+    "target": "autopilot_cube_orange",
+    "protocol": "analog",
+    "sourcePin": "OUT_I",
+    "targetPin": "POWER1"
+  },
+  {
+    "type": "power",
+    "label": "FC Power Supply",
+    "source": "power_monitor_hall",
+    "target": "autopilot_cube_orange",
+    "current": "1A",
+    "voltage": "5.3V"
+  },
+  {
+    "type": "power",
+    "label": "Regulated 12V Camera Power",
+    "source": "camera_power_regulator",
+    "target": "camera_sony_ilx_lr1",
+    "current": "1.5A",
+    "voltage": "12V"
+  },
+  {
+    "type": "power",
+    "label": "Left Aileron Servo Power",
+    "source": "bec_servo_power",
+    "target": "aileron_servo_l",
+    "current": "1.2A",
+    "voltage": "6V"
+  },
+  {
+    "type": "power",
+    "label": "Right Aileron Servo Power",
+    "source": "bec_servo_power",
+    "target": "aileron_servo_r",
+    "current": "1.2A",
+    "voltage": "6V"
+  },
+  {
+    "type": "power",
+    "label": "Elevator Servo Power",
+    "source": "bec_servo_power",
+    "target": "elevator_servo",
+    "current": "1.2A",
+    "voltage": "6V"
+  },
+  {
+    "type": "power",
+    "label": "Rudder Servo Power",
+    "source": "bec_servo_power",
+    "target": "rudder_servo",
+    "current": "1.2A",
+    "voltage": "6V"
+  },
+  {
+    "type": "data",
+    "label": "GNSS RTK CAN Connection",
+    "source": "autopilot_cube_orange",
+    "target": "gnss_rtk_here4",
+    "protocol": "can",
+    "sourcePin": "CAN1",
+    "targetPin": "CAN"
+  },
+  {
+    "type": "power",
+    "label": "GNSS Power",
+    "source": "autopilot_cube_orange",
+    "target": "gnss_rtk_here4",
+    "current": "500mA",
+    "voltage": "5V"
+  },
+  {
+    "type": "data",
+    "label": "Airspeed I2C Data",
+    "source": "autopilot_cube_orange",
+    "target": "airspeed_sensor_ms5525",
+    "protocol": "i2c",
+    "sourcePin": "I2C",
+    "targetPin": "SDA"
+  },
+  {
+    "type": "power",
+    "label": "Airspeed Power",
+    "source": "autopilot_cube_orange",
+    "target": "airspeed_sensor_ms5525",
+    "current": "100mA",
+    "voltage": "5V"
+  },
+  {
+    "type": "data",
+    "label": "Primary Telemetry UART",
+    "source": "autopilot_cube_orange",
+    "target": "rfd900_telemetry",
+    "protocol": "uart",
+    "sourcePin": "USART1",
+    "targetPin": "RX"
+  },
+  {
+    "type": "power",
+    "label": "RFD900 Power",
+    "source": "autopilot_cube_orange",
+    "target": "rfd900_telemetry",
+    "current": "1A",
+    "voltage": "5V"
+  },
+  {
+    "type": "data",
+    "label": "Secondary LTE Link",
+    "source": "autopilot_cube_orange",
+    "target": "backup_4g_dongle",
+    "protocol": "usb",
+    "sourcePin": "USB",
+    "targetPin": "USB_D-"
+  },
+  {
+    "type": "power",
+    "label": "LTE Dongle Power",
+    "source": "autopilot_cube_orange",
+    "target": "backup_4g_dongle",
+    "current": "500mA",
+    "voltage": "5V"
+  },
+  {
+    "type": "data",
+    "label": "Propulsion Throttle Command",
+    "source": "autopilot_cube_orange",
+    "target": "esc_propulsion",
+    "protocol": "pwm",
+    "sourcePin": "MAIN1",
+    "targetPin": "PWM_SIG"
+  },
+  {
+    "type": "data",
+    "label": "Left Aileron Servo Control",
+    "source": "autopilot_cube_orange",
+    "target": "aileron_servo_l",
+    "protocol": "pwm",
+    "sourcePin": "MAIN2",
+    "targetPin": "PWM"
+  },
+  {
+    "type": "data",
+    "label": "Right Aileron Servo Control",
+    "source": "autopilot_cube_orange",
+    "target": "aileron_servo_r",
+    "protocol": "pwm",
+    "sourcePin": "MAIN3",
+    "targetPin": "PWM"
+  },
+  {
+    "type": "data",
+    "label": "Elevator Servo Control",
+    "source": "autopilot_cube_orange",
+    "target": "elevator_servo",
+    "protocol": "pwm",
+    "sourcePin": "MAIN4",
+    "targetPin": "PWM"
+  },
+  {
+    "type": "data",
+    "label": "Rudder Servo Control",
+    "source": "autopilot_cube_orange",
+    "target": "rudder_servo",
+    "protocol": "pwm",
+    "sourcePin": "MAIN5",
+    "targetPin": "PWM"
+  },
+  {
+    "type": "data",
+    "label": "Camera Shutter Trigger",
+    "source": "autopilot_cube_orange",
+    "target": "camera_sony_ilx_lr1",
+    "protocol": "gpio",
+    "sourcePin": "AUX1",
+    "targetPin": "POWER_CONTROL_MULTI"
+  },
+  {
+    "type": "power",
+    "label": "ESC 3-Phase Output",
+    "source": "esc_propulsion",
+    "target": "moter_propulsion",
+    "current": "40A",
+    "voltage": "22.2V"
+  }
+]

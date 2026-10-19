@@ -1,0 +1,21 @@
+id,parametre,valeur_nominale,plage,statut,justification,influence_sur_resultat,essai_pour_lever
+H01,CD0 (cellule complete),0.040,0.030-0.050,HYP,Cellules mousse avec fuselage et camera interne; pas de donnees soufflerie publiees,Forte (3e/4e rang de sensibilite),Essais de plane et paliers a plusieurs vitesses avec capteur de vitesse air; identification de polaire
+H02,Coefficient d'Oswald e,0.78,0.70-0.85,HYP,Valeurs usuelles pour ailes d'allongement 6-8,Faible,Idem H01
+H03,CLmax sans volets,1.1,1.0-1.3,HYP,Profils basse Reynolds; donnees cellule absentes,Lancement et vitesses minimales,Mesure de la vitesse de decrochage en vol a masse connue
+H04,Rendement helice croisiere,0.60,0.50-0.65,HYP,Helices APC 11-13 pouces a 15-20 m/s; pas de courbes au point de fonctionnement,Forte (2e rang),Banc dynamique ou identification en vol (P electrique vs puissance aerodynamique)
+H05,Rendement moteur+ESC,0.85,0.80-0.88,HYP,Moteurs 28xx en charge partielle,Forte (couple avec H04),Banc moteur
+H06,Masse seche Believer (cellule + 2 moteurs + ESC + servos + cablage),1.6 kg,1.4-1.9 kg,HYP,Calee sur essai vendeur ~4.5 kg avec 670 g de charge et LiPo 6S (R12),Moyenne,Pesee des sous-ensembles
+H07,Masse seche Fighter VTOL (cellule + systeme VTOL + moteur croisiere),3.6 kg,3.0-4.5 kg,HYP,Aucune donnee fabricant consultee,Forte pour B,Demande de fiche au fabricant puis pesee
+H08,Puissance auxiliaire,15.6 W,12-20 W,EST,Camera 3.8 W (R10) + estimations,Faible,Mesure au banc de l'ensemble alimente
+H09,Energie utilisable Li-ion,0.85 du nominal,0.75-0.90,HYP,Decharge jusqu'a ~3.0 V/cellule sous charge moderee; derating temperature,Moyenne,Decharge controlee au profil de mission
+H10,Surcout masse pack Li-ion,10 %,8-15 %,HYP,"Barrettes nickel, BMS eventuel, gaine, connecteurs",Faible,Pesee du pack fabrique
+H11,Figure de merite rotors VTOL,0.68,0.60-0.75,HYP,Recoupe par le banc MN4014 16x5.4 (FM x eta = 0.60) R20,Faible,Banc de poussee a la densite du site
+H12,Temps de stationnaire par sortie,120 s,90-180 s,HYP,Decollage 30 m + transitions + descente + positionnement,Faible a moyenne,Journaux d'essais
+H13,Penalite de trainee VTOL dCD0,0.006,0.003-0.012,HYP,Bras et rotors arretes,Moyenne pour B,Essai comparatif en croisiere avec et sans helices de sustentation
+H14,Vitesse d'acquisition,18 m/s,16-22 m/s,HYP,Compromis flou / intervalle / decrochage,Moyenne,Vols d'acquisition
+H15,Hauteur de transit et d'acquisition,300 m AGL,100-1000 m,HYP,Reference de calcul; depend du GSD (D-02),Faible sur l'energie,Sans objet
+H16,Journee chaude,ISA+21 C (30 C au sol a 960 m),ISA a ISA+25,HYP,Climat tropical d'altitude,Moyenne,Releves meteo du site
+H17,Vent moyen,5 m/s,0-10 m/s,HYP,Aucune statistique de vent consultee,Forte (4e rang A),Statistiques de vent et mesures sur site
+H18,Intervalle mini de declenchement,1.0 s,0.4-2.0 s,HYP,Sony indique ~2.5 a 5 i/s selon la sequence FOCUS/TRIGGER (R08); ecriture carte SD non caracterisee,Faible a ces hauteurs,Banc: rafale de 500 declenchements avec carte retenue
+H19,Poussee/poids de sustentation requis,1.8,1.6-2.2,HYP,Marge de commande heuristique; ArduPilot ne fixe pas de valeur (R16),Dimensionne les moteurs de sustentation,Essais de stationnaire avec perturbations et vent
+H20,Rapport crete/moyenne catapulte,1.6,1.3-2.0,HYP,Catapulte elastique non lineaire,Charges structurelles,Accelerometre sur la cellule pendant les lancements

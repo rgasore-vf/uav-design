@@ -1,0 +1,6 @@
+controle,valeur,reference
+FM x eta_ME implicite du banc MN4014 16x5.4 (rho banc suppose 1.20),0.599,modele nominal 0.68x0.85 = 0.578
+"Believer 4.5 kg, 20 m/s, niveau mer, cas optimiste: Wh/km modele",2.34,essai vendeur: 355 Wh x (0.8 a 1.0) / 90 km = 3.2 a 3.9 Wh/km (conditions inconnues)
+"Believer 4.5 kg, 20 m/s, niveau mer, cas nominal: Wh/km modele",3.29,essai vendeur: 355 Wh x (0.8 a 1.0) / 90 km = 3.2 a 3.9 Wh/km (conditions inconnues)
+"Believer 4.5 kg, 20 m/s, niveau mer, cas pessimiste: Wh/km modele",5.03,essai vendeur: 355 Wh x (0.8 a 1.0) / 90 km = 3.2 a 3.9 Wh/km (conditions inconnues)
+"Energie potentielle 5 kg sur 300 m (Wh), avant rendement",4.09,m g h / 3600
