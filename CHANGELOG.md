@@ -1,5 +1,12 @@
 # Historique
 
+## v0.4 (2026-10-19)
+
+- Objectif Sony FE 40 mm F2.5 G (R38) : GSD de 9,4 cm à 1000 m AGL ; 10-12 cm sortiraient du plafond de 1000 m.
+- Scénario prototype v1 : hauteur de 1000 m AGL, charge utile de 516 g ; masse de charge utile calculée sur tous les postes.
+- Dossier 04b : photogrammétrie, intégration de l'objectif dans la soute (2,5 mm de jeu), performances révisées.
+- D-09 tranchée, D-10 en cours.
+
 ## v0.3 (2026-10-19)
 
 - Décisions D-01 à D-04 intégrées : transit de 20 à 30 km, GSD de 10 à 12 cm avec GNSS standard, zone d'environ 100 m, prototype sur Moose.

@@ -75,7 +75,7 @@ aux = {k: v(x) for k, x in P["aux_power_W"].items()}
 P_AUX = sum(val for k, val in aux.items() if k != "bec_efficiency") / aux["bec_efficiency"]
 M_AVIO = sum(v(x) for x in P["avionics_mass_g"].values()) / 1000.0
 pl = {k: v(x) for k, x in P["payload_mass_g"].items()}
-M_PAYLOAD_REAL = (pl["ILX-LR1_body"] + pl["lens_Samyang_AF24_F2.8"] + pl["mount_damping_cables"]) / 1000.0
+M_PAYLOAD_REAL = sum(val for k, val in pl.items() if k != "allowance_total") / 1000.0
 M_PAYLOAD = max(M_PAYLOAD_REAL, pl["allowance_total"] / 1000.0)  # on dimensionne sur l'enveloppe
 
 # ---------------------------------------------------------------- batteries

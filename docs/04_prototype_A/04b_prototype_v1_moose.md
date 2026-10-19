@@ -1,6 +1,6 @@
 # Dossier 04b : Prototype v1, Fixed Wing sur cellule Flightory Moose
 
-Version 0.3, 19 octobre 2026. Ce document intègre les décisions de l'utilisateur du 19 octobre 2026 et définit **le prototype v1** : un appareil simple, construit proprement, instrumenté et testé avec méthode. L'objectif de 2 h de vol (Dossier 03b) reste la cible de la version suivante.
+Version 0.4, 19 octobre 2026. Révision v0.4 : objectif imposé Sony FE 40 mm F2.5 G, licence Flightory en cours de demande. Ce document intègre les décisions de l'utilisateur du 19 octobre 2026 et définit **le prototype v1** : un appareil simple, construit proprement, instrumenté et testé avec méthode. L'objectif de 2 h de vol (Dossier 03b) reste la cible de la version suivante.
 
 Les calculs sont faits avec le scénario `calc/scenarios/prototype_moose_v1.json` (sorties dans `calc/out_prototype_v1/`, régénérées par `make calc`). Ce sont des estimations, pas des mesures.
 
@@ -9,7 +9,9 @@ Les calculs sont faits avec le scénario `calc/scenarios/prototype_moose_v1.json
 | Décision | Contenu | Conséquence |
 |---|---|---|
 | D-01 | Commencer avec 20 à 30 km de transit au total | Référence 2 × 15 km, variante 2 × 10 km |
-| D-02 | GSD de 10 à 12 cm/px ; GNSS standard pour le prototype, RTK plus tard | Vol à 425-765 m AGL selon la focale (section 4) ; points de contrôle au sol pour vérifier la précision |
+| D-02 | GSD de 10 à 12 cm/px ; GNSS standard pour le prototype, RTK plus tard | Avec l'objectif de 40 mm, 10-12 cm exigeraient 1062-1274 m AGL, au-dessus du plafond de 1000 m : **9,4 cm à 1000 m AGL** (section 4) ; points de contrôle au sol pour vérifier la précision |
+| D-09 | Objectif Sony FE 40 mm F2.5 G (0,28 m / 0,92 ft, Φ 49 mm) | 173 g, 68 × 45 mm (R38) |
+| D-10 | Contact avec Flightory pour la licence | En cours |
 | D-03 | Prototype sur fuselage Flightory, puis licence institutionnelle ou fuselage propre | Moose retenu pour le prototype v1 ; voir la section 2 sur la licence |
 | D-04 | Zone d'environ 100 m disponible | Catapulte et atterrissage sur patins ou parachute ; la nature des abords reste à préciser (D-08) |
 | D-07 | Chercher d'autres cellules FW, sans viser une performance exceptionnelle | Section 7 |
@@ -34,7 +36,7 @@ Je ne suis pas juriste. Ce qui suit est une lecture factuelle de la licence (R02
 | Batterie | Li-ion P45B 6S3P pour les premiers vols, puis **6S4P** pour la mission | R04 |
 | Autopilote | CUAV X7+ Pro existant, ArduPilot Plane | R15 |
 | GNSS | Récepteur standard, sans RTK ; journalisation brute activée si le récepteur le permet, pour préparer le PPK | D-02 |
-| Caméra | Sony ILX-LR1 ; objectif de 24 mm (Samyang AF 24 mm F2.8 FE, 93 g, 37 mm) en référence | R07, R24 |
+| Caméra | Sony ILX-LR1 + **Sony FE 40 mm F2.5 G** (173 g, Ø 68 × 45 mm, filtre de 49 mm, mise au point minimale de 0,28 m en AF) | R07, R38 |
 | Lancement | Catapulte élastique, course de 3 à 4 m | Section 5 |
 | Récupération | Atterrissage sur patins si les abords sont dégagés ; parachute sinon | Section 5, D-08 |
 
@@ -44,83 +46,94 @@ Je ne suis pas juriste. Ce qui suit est une lecture factuelle de la licence (R02
 |---|---|---|
 | Cellule imprimée, carbone, 2 moteurs, 2 ESC, 4 servos, câblage | 1200 (1000 à 1500) | HYP |
 | Avionique (X7+ Pro, GNSS, radio, Pitot, BEC, interface caméra) | 320 | SRC + EST |
-| Charge utile dimensionnante | 500 (réelle estimée 436) | SRC + EST |
+| Charge utile : boîtier 243 + objectif 173 + support et câbles 100 | **516**, soit 16 g au-dessus de l'enveloppe de 500 g (PL-01) | SRC + EST |
 | Batterie 6S4P (24 × 70 g + 10 %) | 1848 | SRC + HYP |
-| **Total** | **3868**, soit 86 % de la MTOW de 4,5 kg | |
+| **Total** | **3884**, soit 86 % de la MTOW de 4,5 kg | |
 
-En configuration 6S3P (premiers vols), la masse est de 3,41 kg, soit 76 % de la MTOW. Avec un parachute (+0,2 kg estimé), le 6S4P passe à 4,07 kg, soit 90 % de la MTOW.
+En configuration 6S3P (premiers vols), la masse est de 3,42 kg, soit 76 % de la MTOW. Avec un parachute (+0,2 kg estimé), le 6S4P passe à 4,08 kg, soit 91 % de la MTOW.
+
+**PL-01.** Pour respecter l'enveloppe de 500 g, le support, l'amortissement et les câbles doivent peser 84 g au plus. Sinon, il faut acter 516 g, ce qui a un effet négligeable sur l'énergie (inclus dans les calculs).
+
+**Intégration dans la soute.** La soute fait 90 mm de haut. Le boîtier (42,5 mm) et l'objectif (45 mm) font 87,5 mm, ce qui laisse 2,5 mm. C'est trop peu pour un support amorti, dont le débattement demande plusieurs millimètres. L'objectif devra probablement dépasser sous le fuselage à travers une ouverture. Il serait alors exposé à l'atterrissage sur patins. Il faut soit un carénage avec fenêtre optique, soit un parachute, soit un support escamotable. **C'est un point à résoudre en CAO avant toute impression.**
 
 **Logement de la batterie.** Le compartiment fait 225 mm de long, 90 mm de haut, et 120 à 60 mm de large en se rétrécissant vers le nez (R01). Un 6S4P en cellules 21700 couchées, 3 en longueur × 4 en hauteur × 2 en largeur, occupe environ 210 × 86 × 43 mm. Il tient sur le papier, mais le câblage et les barrettes de connexion sont à vérifier en CAO.
 
-## 4. Photogrammétrie pour un GSD de 10 à 12 cm
+## 4. Photogrammétrie avec l'objectif Sony FE 40 mm
 
 Capteur : 35,8 × 23,9 mm, 9504 × 6336 px, pas de 3,77 µm (R09). La relation est H = GSD × f / pas.
 
-| Focale | Hauteur AGL pour 10 à 12 cm | Empreinte à 11 cm | Intervalle de déclenchement (ortho 80/70, 18 m/s) | Couverture |
-|---|---|---|---|---|
-| 16 mm | 425 à 510 m | 1045 × 697 m | 7 à 8,5 s | 15 à 18 km²/h |
-| 20 mm | 531 à 637 m | idem | idem | idem |
-| 24 mm (référence) | 637 à 765 m | idem | 7,7 s à 700 m | 16 km²/h |
+**Conflit entre exigences.** Avec f = 40 mm, un GSD de 10 à 12 cm demande de voler à **1062 à 1274 m AGL**, au-dessus du plafond de 1000 m (MIS-04). Le maximum atteignable sous ce plafond est **9,4 cm/px à 1000 m**, plus fin que la cible : la qualité y gagne, la couverture un peu moins. Je retiens 1000 m AGL comme hauteur de référence.
 
-- **Couverture par vol.** 30 minutes d'acquisition correspondent à environ 8 km² en ortho. En 3D (80/80), le chiffre tombe à environ 5,4 km².
-- **Flou et cadence.** Le flou est négligeable (0,16 px à 1/1000 s), et la cadence ne contraint pas (un déclenchement toutes les 7 s ou plus).
-- **Volume de données.** Environ 23 images par km², soit environ 2,4 Go/km² en RAW brut.
+| Hauteur AGL | GSD | Empreinte | Interligne (ortho 80/70) | Intervalle à 18 m/s | Couverture ortho | Images/km² | RAW brut |
+|---|---|---|---|---|---|---|---|
+| 700 m | 6,6 cm | 626 × 418 m | 188 m | 4,6 s | 9,7 km²/h | 64 | 6,7 Go/km² |
+| 850 m | 8,0 cm | 761 × 507 m | 228 m | 5,6 s | 11,8 km²/h | 43 | 4,6 Go/km² |
+| **1000 m (référence)** | **9,4 cm** | **895 × 597 m** | **269 m** | **6,6 s** | **13,9 km²/h** | **31** | **3,3 Go/km²** |
+| 1062 m (hors plafond) | 10,0 cm | 950 × 634 m | 285 m | 7,0 s | 14,8 km²/h | 28 | 2,9 Go/km² |
 
-**Trois contraintes nouvelles apparaissent avec ce GSD :**
+- **Couverture par vol.** 30 minutes d'acquisition à 1000 m couvrent environ 7 km² en ortho, ou environ 4,6 km² en 3D (80/80).
+- **Flou et cadence.** Le flou est négligeable (0,19 px à 1/1000 s), et la cadence ne contraint pas (un déclenchement toutes les 6,6 s).
+- **Réglages de l'objectif, à vérifier au banc.** Mise au point à l'infini, ouverture de f/5,6 à f/8 (hypothèse de netteté). Comme la mise au point est commandée électroniquement, sa tenue après la mise sous tension et sous vibrations doit être vérifiée : il faut soit déclencher en AF-S via la broche FOCUS, soit vérifier que la position MF est conservée. Les bagues de l'objectif (ouverture, commutateurs) doivent être immobilisées.
 
-1. **Hauteur de vol.** Voler à 425-765 m AGL demande une autorisation explicite de l'AAC. Une focale plus courte réduit la hauteur nécessaire d'environ 30 %.
-2. **Nébulosité.** Dans la région des Virunga, une base de nuages sous la hauteur de vol interdit l'acquisition. Plus la focale est courte, plus on vole bas, ce qui donne un argument pour 16 à 20 mm. Il faut une statistique de base de nuages sur les sites.
-3. **Relief.** Avec une altitude AMSL constante, une variation de terrain de ±200 m fait varier le GSD de ±30 % à 700 m AGL. Il faut planifier en suivi de terrain sur un MNT, ou calculer les recouvrements au point le plus haut (PL-06).
+**Contraintes de la hauteur de 1000 m AGL :**
 
-**Précision.** Un GNSS autonome donne un géoréférencement absolu de l'ordre du mètre au mieux, qui dépend du récepteur et des conditions. Pour un prototype, c'est acceptable à condition de **mesurer** la précision obtenue sur des points de contrôle au sol, plutôt que de la supposer.
+1. **Autorisation.** Elle doit être obtenue explicitement auprès de l'AAC.
+2. **Nébulosité.** La base des nuages doit être au-dessus de 1000 m AGL sur la zone de travail. Il faut une statistique de base de nuages sur les sites ; à défaut, voler plus bas, ce qui affine le GSD et réduit la couverture.
+3. **Relief.** Une variation de terrain de ±200 m fait varier le GSD d'environ ±20 % à 1000 m. Il faut planifier en suivi de terrain, ou calculer les recouvrements au point le plus haut.
+4. **Densité de l'air.** La croisière se fait à environ 1960 m AMSL, avec une densité de 0,94 kg/m³ par temps chaud. C'est pris en compte dans les calculs.
 
-**Choix de caméra.** À 10-12 cm/px, la résolution de 61 MP de l'ILX-LR1 sert surtout à couvrir plus de surface par image. Un appareil plus léger et moins cher atteindrait ce GSD à plus basse altitude. Je garde l'ILX-LR1, qui est ton choix et prépare les GSD plus fins de l'avenir, mais c'est un arbitrage à reconsidérer si le budget ou la masse deviennent limitants.
+**Précision.** Un GNSS autonome donne un géoréférencement absolu de l'ordre du mètre au mieux. La précision réelle doit être **mesurée** sur des points de contrôle au sol.
 
 ## 5. Lancement et récupération dans une zone d'environ 100 m
 
-**Lancement** (3,87 kg, site à 960 m par 30 °C, CLmax de 1,1) :
+**Lancement** (3,88 kg, site à 960 m par 30 °C, CLmax de 1,1) :
 
 | Grandeur | Valeur |
 |---|---|
 | Vs | 13,5 m/s |
 | Vitesse de lancement visée | 16,9 m/s |
-| Catapulte de 3 m | 4,8 g en moyenne, environ 7,7 g en crête, environ 293 N |
+| Catapulte de 3 m | 4,9 g en moyenne, environ 7,8 g en crête, environ 296 N |
 | Catapulte de 4 m | 3,6 g en moyenne, environ 5,8 g en crête |
 
 Le lancement à la main n'est pas réaliste à cette masse. Une catapulte de 3 à 4 m tient largement dans 100 m.
 
-**Atterrissage sur patins.** Au toucher à 1,1 Vs (environ 15 m/s), l'énergie vaut environ 426 J. La glissade sur herbe est d'environ V²/(2μg) ≈ 25 m, avec un coefficient de frottement μ ≈ 0,45 (hypothèse). Le facteur limitant n'est pas la glissade mais **l'approche**. Sans volets, la pente d'approche est d'environ 1/(L/D), soit environ 1/10. Pour passer au-dessus d'obstacles de 20 m, il faut donc environ 200 m dégagés en amont du point de toucher.
+**Atterrissage sur patins.** Au toucher à 1,1 Vs (environ 15 m/s), l'énergie vaut environ 429 J. La glissade sur herbe est d'environ V²/(2μg) ≈ 25 m, avec un coefficient de frottement μ ≈ 0,45 (hypothèse). Le facteur limitant n'est pas la glissade mais **l'approche**. Sans volets, la pente d'approche est d'environ 1/(L/D), soit environ 1/10. Pour passer au-dessus d'obstacles de 20 m, il faut donc environ 200 m dégagés en amont du point de toucher.
 
 **Conséquence (D-08).**
 - Si les 100 m sont une bande avec des abords dégagés, comme un champ ou une piste, l'atterrissage sur patins convient.
-- Si c'est une clairière entourée d'arbres, il faut un **parachute**. La configuration passe alors à 4,07 kg et 90 % de la MTOW, ce qui reste faisable (marge de 49 Wh à 30 minutes d'acquisition), ou à un VTOL.
+- Si c'est une clairière entourée d'arbres, il faut un **parachute**. La configuration passe alors à 4,08 kg et 91 % de la MTOW, ce qui reste faisable (marge de 26 Wh à 30 minutes d'acquisition), ou à un VTOL.
+- Dans les deux cas, l'objectif qui dépasse sous le fuselage (section 3.1) doit être protégé.
 
 ## 6. Performances de la mission prototype
 
-Mission : 2 × 15 km, acquisition à 700 m AGL, vent de 5 m/s, ISA+21 °C, 30 % de réserve.
+Mission : 2 × 15 km, acquisition à 1000 m AGL (9,4 cm/px), vent de 5 m/s, ISA+21 °C, 30 % de réserve, charge utile de 516 g.
 
 | Configuration | Acquisition | Masse | Besoin avec réserve | Utilisable | Marge |
 |---|---|---|---|---|---|
-| Moose, patins, 6S4P | 30 min | 3,87 kg | 267 Wh | 330 Wh | **+64 Wh** |
-| Moose, patins, 6S4P | 45 min | 3,87 kg | 320 Wh | 330 Wh | +10 Wh |
-| Moose, patins, 6S3P | 30 min | 3,41 kg | 240 Wh | 248 Wh | +7 Wh |
-| Moose, parachute, 6S4P | 30 min | 4,07 kg | | | +49 Wh |
-| B, Fighter VTOL, 6S8P (rappel) | 30 min | 8,12 kg | 629 Wh | 661 Wh | +32 Wh |
+| Moose, patins, 6S4P | 30 min | 3,88 kg | 288 Wh | 330 Wh | **+42 Wh** |
+| Moose, patins, 6S4P, vent de 8 m/s | 30 min | 3,88 kg | 305 Wh | 330 Wh | +26 Wh |
+| Moose, patins, 6S4P, vent de 10 m/s | 30 min | 3,88 kg | 324 Wh | 330 Wh | +6 Wh |
+| Moose, patins, 6S4P | 45 min | 3,88 kg | 343 Wh | 330 Wh | −12 Wh |
+| Moose, patins, 6S3P | 30 min | 3,42 kg | 256 Wh | 248 Wh | −9 Wh (6S3P limité à environ 15 min d'acquisition) |
+| Moose, parachute, 6S4P | 30 min | 4,08 kg | 304 Wh | 330 Wh | +26 Wh |
+| B, Fighter VTOL, 6S8P (rappel) | 30 min | 8,13 kg | 672 Wh | 661 Wh | −11 Wh |
 
-**Mission de référence.** Le prototype v1 en 6S4P tient 30 minutes d'acquisition, soit environ 8 km² à 11 cm/px, avec une vraie marge. Il tient encore à 8 m/s de vent (+47 Wh) et à 10 m/s (+28 Wh). La durée de vol est d'environ 70 minutes, réserve non consommée.
+**Mission de référence.** Le prototype v1 en 6S4P tient 30 minutes d'acquisition, soit environ 7 km² à 9,4 cm/px, avec une marge confortable jusqu'à 8 m/s de vent. La durée de vol est d'environ 75 minutes, dont environ 8 minutes de montée jusqu'à 1000 m et environ 6 minutes de descente. **Voler à 1000 m plutôt qu'à 700 m, avec un objectif plus lourd, coûte environ 22 Wh de marge** : montée plus longue et air moins dense.
 
 **Sensibilité** (`calc/out_prototype_v1/sensibilite.csv`) :
 
 | Paramètre | Amplitude |
 |---|---|
-| Durée d'acquisition | 160 Wh |
-| Rendement propulsif | 92 Wh |
-| CD0 | 67 Wh |
-| Énergie utilisable de la batterie | 58 Wh |
+| Durée d'acquisition | 164 Wh |
+| Rendement propulsif | 100 Wh |
+| CD0 | 70 Wh |
+| Énergie utilisable | 58 Wh |
 | Vent | 44 Wh |
-| Masse sèche | 35 Wh |
+| Masse sèche | 41 Wh |
 
-**Pire cas plausible.** Avec un rendement de 0,40, la marge tombe à −2 Wh. Le rendement propulsif est donc le premier paramètre à mesurer.
+**Pire cas plausible.** Avec un rendement de 0,40, la marge tombe à −29 Wh. Le rendement propulsif reste le premier paramètre à mesurer.
+
+**Prototype B.** Dans ce scénario, le VTOL ne tient plus 30 minutes d'acquisition avec un 6S8P (−11 Wh), à cause de la montée et de la croisière à 1000 m. Il reste limité à environ 15 minutes en 6S6P.
 
 ## 7. Autres cellules Fixed Wing recherchées
 

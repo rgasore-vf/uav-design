@@ -1,6 +1,6 @@
 # uav-design : UAV de cartographie, prototypes A (Fixed Wing) et B (VTOL)
 
-Version 0.3, 19 octobre 2026. Phases couvertes : 0 (audit et reprise), 1 (recherche et exigences) et 2 (avant-projets). Les dossiers 06 à 09 seront produits en Phases 3 à 5. Je ne crée pas de fichiers vides pour les annoncer.
+Version 0.4, 19 octobre 2026. Phases couvertes : 0 (audit et reprise), 1 (recherche et exigences) et 2 (avant-projets). Les dossiers 06 à 09 seront produits en Phases 3 à 5. Je ne crée pas de fichiers vides pour les annoncer.
 
 ## 1. Objectifs et contraintes reformulés
 
@@ -87,15 +87,15 @@ L'exigence MIS-02 est passée à 2 h de vol avec 30 % de réserve, soit environ 
 
 Décisions du 2026-10-19 : GSD de 10 à 12 cm/px avec GNSS standard, transit de 20 à 30 km pour commencer, zone d'environ 100 m, prototype sur fuselage Moose. Détail dans `docs/04_prototype_A/04b_prototype_v1_moose.md`, scénario `calc/scenarios/prototype_moose_v1.json`, sorties dans `calc/out_prototype_v1/`.
 
-| Prototype v1 (2 × 15 km, 30 min d'acquisition à 700 m AGL, vent de 5 m/s) | Valeur estimée |
+| Prototype v1 (2 × 15 km, 30 min d'acquisition à 1000 m AGL, objectif Sony FE 40 mm, vent de 5 m/s) | Valeur estimée |
 |---|---|
-| Masse au décollage (6S4P, patins) | 3,87 kg (86 % de la MTOW du Moose) |
-| Marge d'énergie avec 30 % de réserve | +64 Wh (encore +28 Wh à 10 m/s de vent) |
-| Durée de vol | environ 70 min |
-| Surface couverte à 11 cm/px | environ 8 km² en ortho par vol |
+| Masse au décollage (6S4P, patins) | 3,88 kg (86 % de la MTOW du Moose) |
+| Marge d'énergie avec 30 % de réserve | +42 Wh (+26 Wh à 8 m/s de vent, +6 Wh à 10 m/s) |
+| Durée de vol | environ 75 min |
+| GSD et surface couverte | 9,4 cm/px ; environ 7 km² en ortho par vol |
 | Lancement | Catapulte de 3 à 4 m (environ 17 m/s) |
 
-**Points d'attention.** La licence Flightory couvre aussi les fichiers modifiés (D-10). Un GSD de 10 à 12 cm impose de voler entre 425 et 765 m AGL : il faut une autorisation de l'AAC et une base de nuages suffisante (D-09). L'atterrissage sur patins suppose des abords dégagés ; dans une clairière, il faut un parachute (D-08).
+**Points d'attention.** La licence Flightory couvre aussi les fichiers modifiés (D-10). Avec l'objectif de 40 mm, 10-12 cm exigeraient 1062-1274 m AGL, au-dessus du plafond de 1000 m ; la référence est donc 9,4 cm à 1000 m AGL, ce qui demande une autorisation de l'AAC et une base de nuages suffisante. L'objectif (45 mm de long) ne laisse que 2,5 mm de jeu dans la soute de 90 mm : son intégration et sa protection à l'atterrissage sont à résoudre en CAO. L'atterrissage sur patins suppose des abords dégagés ; dans une clairière, il faut un parachute (D-08).
 
 ## 4. Exigences critiques pour le choix entre A et B
 
@@ -125,8 +125,8 @@ Décisions du 2026-10-19 : GSD de 10 à 12 cm/px avec GNSS standard, transit de 
 D-01 à D-04 ont été tranchées le 2026-10-19 (voir `registres/decisions.csv`). Je ne liste ici que ce qui change réellement la conception ; le reste avance sur les hypothèses.
 
 - **D-08** : la zone de 100 m a-t-elle des abords dégagés (piste, champ) ou est-ce une clairière entourée d'arbres ? La réponse décide entre patins et parachute.
-- **D-09** : quelle focale (16, 20 ou 24 mm), donc quelle hauteur de vol l'AAC autorisera-t-elle ?
-- **D-10** (action) : demander à Flightory le prix de la licence institutionnelle avant d'imprimer.
+- **D-09** (tranchée : Sony FE 40 mm) : hauteur de référence de 1000 m AGL, à faire autoriser par l'AAC.
+- **D-10** (en cours) : contact avec Flightory pour la licence institutionnelle.
 - **D-05** : plafond budgétaire, et possession éventuelle de la caméra et d'un objectif.
 - **D-06** (version suivante) : cellules de batterie haute énergie pour l'objectif de 2 h.
 - **D-07** (en cours) : recherche élargie de cellules FW ; Believer 1960 et Nimbus Pro 1900 sont les alternatives au Moose.

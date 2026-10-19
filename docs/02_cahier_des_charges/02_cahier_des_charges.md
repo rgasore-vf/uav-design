@@ -35,8 +35,8 @@ Conséquence : **la décision D-01, durée ou surface d'acquisition par sortie, 
 | MIS-05 | Conditions atmosphériques de dimensionnement | Jusqu'à ISA+21 °C (30 °C au sol) | P | A |
 | MIS-06 | Vent moyen admissible pour la mission de référence | 8 m/s (cible), à arbitrer avec MIS-02 | P | A, D |
 | MIS-07 | Vitesse de décrochage en configuration d'acquisition | V_acq ≥ 1,3 Vs à la masse et la densité du vol | Confirmée | A, E |
-| PL-01 | Charge utile | ILX-LR1 + objectif + support + câblage ≤ 500 g | Confirmée | I (pesée) |
-| PL-02 | Résolution au sol | **10 à 12 cm/px** ; hauteur de 425 à 765 m AGL selon la focale (D-09) | Confirmée (D-02) | A, D |
+| PL-01 | Charge utile | ILX-LR1 + objectif + support + câblage ≤ 500 g ; avec le FE 40 mm (173 g), le support et les câbles doivent peser 84 g au plus (estimation actuelle : 516 g au total) | Confirmée | I (pesée) |
+| PL-02 | Résolution au sol | Cible de 10 à 12 cm/px ; **avec l'objectif de 40 mm, 9,4 cm à 1000 m AGL** (10-12 cm sortiraient du plafond MIS-04) | Confirmée (D-02, D-09) | A, D |
 | PL-03 | Flou de bougé | ≤ 0,5 px à la vitesse d'acquisition | Proposée | A, D |
 | PL-04 | Déclenchement | Via le terminal Power and Control : FOCUS puis TRIGGER, en collecteur ouvert | Confirmée (R08) | E (banc) |
 | PL-05 | Retour d'exposition | Signal EXPOSURE horodaté par l'autopilote pour chaque image | Confirmée | E, D |
